@@ -1,6 +1,6 @@
 @php
-    $navItemClass = 'nav-item m-2';
-    $navItemStyle = 'border: 1px solid black; background-color: lightblue;';
+    $navItemClass = 'nav-item p-2';
+    $navItemStyle = 'min-width:15%; border: 1px solid black;height:100%; background-color: lightblue;';
 @endphp
 
 <ul class="nav w-100 d-flex justify-content-between">

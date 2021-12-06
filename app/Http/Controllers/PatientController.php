@@ -7,26 +7,21 @@ use App\Providers\RouteServiceProvider;
 
 class PatientController extends Controller
 {
-    public static function home()
+    public function home()
     {
         return view(
             RouteServiceProvider::HOME,
-            ['patients' => Patient::all(),
-                'chosenpatient' => null]
+            [
+                'patients' => Patient::all(),
+                'chosenpatient' => null
+            ]
         );
     }
 
-    public static function patient($id)
+    public function homeWithChosenPatient($id)
     {
         return view(
-            'components/layout/patient', ['chosenpatient' => Patient::find($id)]
-        );
-    }
-
-    public static function mainview($id)
-    {
-        return view(
-            'home',
+            RouteServiceProvider::HOME,
             [
                 'patients' => Patient::all(),
                 'chosenpatient' => Patient::find($id)

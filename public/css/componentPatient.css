@@ -1,0 +1,36 @@
+#patientBody {
+    margin: 5%;
+}
+
+#containerPatient {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-template-areas:
+        "up middle"
+        "down down";
+    text-align: center;
+    padding: 2%;
+    grid-gap: 4%;
+}
+
+#containerPatient > div > p {
+    margin: 2%;
+    color: indigo;
+    background-color: #edf2f7;
+    font-size: larger;
+}
+
+#up {
+    grid-area: up;
+    background-color: darkolivegreen;
+}
+
+#middle {
+    grid-area: middle;
+    background-color: darkkhaki;
+}
+
+#down {
+    grid-area: down;
+    background-color: navajowhite;
+}

@@ -17,7 +17,7 @@
 
 <body>
 
-<div @class('container')>
+<div class="container">
     <nav>
         <x-layout.navigation></x-layout.navigation>
     </nav>
