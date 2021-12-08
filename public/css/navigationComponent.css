@@ -1,0 +1,23 @@
+#navContainer {
+    background-color: #edf2f7;
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    grid-template-areas:
+        "nav nav";
+}
+
+#navNav {
+    grid-area: nav;
+    background-color: darkolivegreen;
+}
+
+.navItem {
+    border: 3px solid red;
+    min-width: 15%;
+    padding: 0.2%;
+}
+.navItem>a {
+    background-color: lightblue;
+    border: 1px solid black;
+}
+

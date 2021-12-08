@@ -1,15 +1,10 @@
-.container {
+#layoutContainer {
     background-color: #edf2f7;
     display: grid;
-    grid-template-columns: 30% 1fr;
+    grid-template-columns: 20% 80%;
     grid-template-areas:
         "nav nav"
         "aside main";
-}
-
-nav {
-    grid-area: nav;
-    background-color: darkolivegreen;
 }
 
 aside {

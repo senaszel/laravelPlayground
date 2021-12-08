@@ -14,18 +14,32 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get(
-    '/', [\App\Http\Controllers\PatientController::class,'home']
+    '/',
+    function () {
+        return view('home');
+    }
+//        return '<script type="text/javascript">alert("hello!");</script>';
 )->name('home');
 
 Route::get(
-    '/{id}',
-    [\App\Http\Controllers\PatientController::class,'mainview']
-)
-    ->name('homewithid');
+    '/patient/all', [\App\Http\Controllers\PatientController::class,'patientHome']
+)->name('patient-all');
+
+Route::get(
+    'patient/{id}',
+    [\App\Http\Controllers\PatientController::class, 'patientHomeWithChosenPatient']
+)->name('patient-id');
 
 Route::get(
     '/alert',
     function () {
         return '<script type="text/javascript">alert("hello!");</script>';
+    }
+)->name('alert');
+
+Route::get(
+    '/2',
+    function () {
+        return view('home');
     }
 );

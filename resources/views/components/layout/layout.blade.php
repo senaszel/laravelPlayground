@@ -11,16 +11,17 @@
           crossorigin="anonymous"
     >
     <link rel="stylesheet"
-          href="{{ asset('css/layout.css') }}"
+          href="{{ asset('css/old-layout.css') }}"
+    >
+    <link rel="stylesheet"
+          href="{{ asset('css/navigationComponent.css') }}"
     >
 </head>
 
 <body>
 
-<div class="container">
-    <nav>
-        <x-layout.navigation></x-layout.navigation>
-    </nav>
+<div id="layoutContainer">
+    <x-layout.navigation></x-layout.navigation>
 
     <aside>
         <x-sideMenu

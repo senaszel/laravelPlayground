@@ -7,10 +7,10 @@ use App\Providers\RouteServiceProvider;
 
 class PatientController extends Controller
 {
-    public function home()
+    public function patientHome()
     {
         return view(
-            RouteServiceProvider::HOME,
+            'patients-home',
             [
                 'patients' => Patient::all(),
                 'chosenpatient' => null
@@ -18,10 +18,10 @@ class PatientController extends Controller
         );
     }
 
-    public function homeWithChosenPatient($id)
+    public function patientHomeWithChosenPatient($id)
     {
         return view(
-            RouteServiceProvider::HOME,
+            'patients-home',
             [
                 'patients' => Patient::all(),
                 'chosenpatient' => Patient::find($id)
