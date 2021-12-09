@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +17,6 @@ Route::get(
     function () {
         return view('home');
     }
-//        return '<script type="text/javascript">alert("hello!");</script>';
 )->name('home');
 
 Route::get(
@@ -29,17 +27,3 @@ Route::get(
     'patient/{id}',
     [\App\Http\Controllers\PatientController::class, 'patientHomeWithChosenPatient']
 )->name('patient-id');
-
-Route::get(
-    '/alert',
-    function () {
-        return '<script type="text/javascript">alert("hello!");</script>';
-    }
-)->name('alert');
-
-Route::get(
-    '/2',
-    function () {
-        return view('home');
-    }
-);
