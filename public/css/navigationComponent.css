@@ -16,8 +16,18 @@
     min-width: 15%;
     padding: 0.2%;
 }
-.navItem>a {
+.navItem>a, .navItem>div>a, .navItem>div>ul>li>a {
     background-color: lightblue;
     border: 1px solid black;
+    text-align: center;
 }
 
+.dropdown-menu {
+    min-width: 100%;
+    background-color: darkolivegreen;
+    border: 3px solid red;
+}
+
+.dropdown-item {
+    text-align: center;
+}

@@ -1,0 +1,33 @@
+#container_registerForm {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 5% 0;
+    background-color: #b6b6b6;
+}
+
+.item_registerForm {
+    padding: 10px;
+    margin: 0 25% 1%;
+    width: 50%;
+    background-color: rgb(162, 86, 86);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.item_registerForm:last-child {
+    margin: 0 25%;
+}
+
+#registerButton {
+    color: blue;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.errorMSG {
+    text-transform: capitalize;
+    font-size: small;
+    color: red;
+    margin-top: 0.5rem;
+}

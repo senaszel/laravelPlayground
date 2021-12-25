@@ -1,26 +1,26 @@
 #patientBody {
-    margin: 5%;
+    margin: 5% 5% 5% 5%;
 }
 
 #containerPatient {
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(1,9fr 1fr);
     grid-template-areas:
         "up middle"
         "down down";
     text-align: center;
-    grid-gap: 4%;
 }
 
 #containerPatient > p {
     color: #320254;
     font-size: 2rem;
-    padding: 5%;
+    margin: 0;
+    padding: 2% 0;
 }
 
 #up {
     grid-area: up;
-    background-color: darkolivegreen;
+    background-color: #dcd3d3;
 }
 
 #middle {
