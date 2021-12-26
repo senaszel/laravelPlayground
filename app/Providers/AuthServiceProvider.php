@@ -27,16 +27,16 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        $this->defineUserRoleGate('isAdmin',UserRole::ADMIN);
-        $this->defineUserRoleGate('isNurse',UserRole::NURSE);
-        $this->defineUserRoleGate('isPatient',UserRole::PATIENT);
-        $this->defineUserRoleGate('isDoctor',UserRole::DOCTOR);
+        $this->defineUserRoleGate('Patient',UserRole::PATIENT);
+        $this->defineUserRoleGate('Admin',UserRole::ADMIN);
+        $this->defineUserRoleGate('Nurse',UserRole::NURSE);
+        $this->defineUserRoleGate('Doctor',UserRole::DOCTOR);
     }
 
     private function defineUserRoleGate(string $name, string $role): void
     {
         Gate::define($name, function (User $user) use ($role) {
-            return $user->role == UserRole::ADMIN;
+            return $user->role == $role;
         });
     }
 }

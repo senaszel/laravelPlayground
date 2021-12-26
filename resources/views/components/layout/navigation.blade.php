@@ -3,29 +3,88 @@
 <div id="navContainer"></div>
 <nav id="navNav">
     <ul class="nav w-100 d-flex justify-content-between">
-        @can(env('ROLE_ADMIN'))
+        @guest
             <li class="navItem">
-                <a class="nav-link active" aria-current="page" href="{{ route('patient-all') }}">Rejestr Pacjentów</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Aktualności</a>
+            </li>
+        @endguest
+
+        @can('Patient')
+            <li class="navItem">
+                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Aktualności dla Pacjentów</a>
+            </li>
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Wnioskuj o szczepienie</a>
+            </li>
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Historia szczepień</a>
+            </li>
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Moje Certyfikaty szczepienia</a>
             </li>
         @endcan
-        <li class="navItem">
-            <a class="nav-link" href="{{ route('home') }}">home</a>
-        </li>
-        <li class="navItem">
-            <a class="nav-link disabled" href="#">wolne</a>
-        </li>
-        <li class="navItem">
-            <a class="nav-link disabled" href="#">wolne</a>
-        </li>
-        <li class="navItem">
-            <a class="nav-link disabled" href="#">wolne</a>
-        </li>
+
+        @can('Admin')
+            <li class="navItem">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Aktualności
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li class="navItem">
+                            <a class="nav-link disabled" aria-current="page" href="#">Widoczne dla pacjentów</a>
+                        </li>
+                        <li class="navItem">
+                            <a class="nav-link disabled" aria-current="page" href="#">Dodaj nowy wpis</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li class="navItem">
+                <div class="dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                       data-bs-toggle="dropdown" aria-expanded="false">
+                        Użytkownicy
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li class="navItem">
+                            <a class="nav-link disabled" aria-current="page" href="#">Wszyscy użytkownicy</a>
+                        </li>
+                        <li class="navItem">
+                            <a class="nav-link disabled" aria-current="page" href="#">Dodaj nowego użytkownika</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+        @endcan
+
+        @can('Nurse')
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Zarejestruj pacjenta</a>
+            </li>
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Zaplanuj szczepienia</a>
+            </li>
+        @endcan
+
+        @can('Doctor')
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Dzisiejsze szczepienia</a>
+            </li>
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Rejestr szczepionek</a>
+            </li>
+            <li class="navItem">
+                <a class="nav-link disabled" aria-current="page" href="#">Harmonogram pracy</a>
+            </li>
+        @endcan
         <li class="navItem">
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                    data-bs-toggle="dropdown" aria-expanded="false">
                     @guest
-                        Welcome, Anon!
+                        Zacznij tutaj!
                     @endguest
                     @auth
                         {{ Auth::user()->title ?? " " }} {{ ucfirst(Auth::user()->username) ?? "anon" }}
@@ -36,7 +95,10 @@
                         <li><a class="dropdown-item" href="{{ route('createNewUser') }}">Załóż konto</a></li>
                         <li><a class="dropdown-item" href="{{ route('loginForm') }}">Zaloguj</a></li>
                     @endguest
-                    <li><a class="dropdown-item" href="{{ route('logout') }}">Wyloguj</a></li>
+                    @auth
+                        <li><a class="dropdown-item disabled" href="#">Moje dane</a></li>
+                        <li><a class="dropdown-item" href="{{ route('logout') }}">Wyloguj</a></li>
+                    @endauth
                 </ul>
             </div>
         </li>

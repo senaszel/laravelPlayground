@@ -1,5 +1,6 @@
 #navContainer {
-    background-color: #edf2f7;
+    margin: 0;
+    background-color: #ffffff;
     display: grid;
     grid-template-columns: 30% 1fr;
     grid-template-areas:
@@ -8,26 +9,44 @@
 
 #navNav {
     grid-area: nav;
-    background-color: darkolivegreen;
+    background-color: #5ba2f4;
 }
 
 .navItem {
-    border: 3px solid red;
+    background-color: rgba(201, 187, 170, 0.55);
+    border: 3px solid rgba(3, 76, 129, 0.45);
     min-width: 15%;
     padding: 0.2%;
 }
-.navItem>a, .navItem>div>a, .navItem>div>ul>li>a {
-    background-color: lightblue;
-    border: 1px solid black;
+
+.navItem > a, .navItem > div > a, .navItem > div > ul > li > a {
+    background-color: rgba(201, 187, 170, 0.55);
+    /*border: 1px solid 	#7f858c;*/
     text-align: center;
+    color: black;
 }
 
 .dropdown-menu {
     min-width: 100%;
-    background-color: darkolivegreen;
-    border: 3px solid red;
+    max-width: 100%;
+    background-color: #5ba2f4;
+    border: 3px solid #034c81;
 }
 
 .dropdown-item {
+    min-width: 98%;
+    max-width: 98%;
+    margin: 1%;
     text-align: center;
 }
+
+.dropdown-menu > li {
+    margin: 1%;
+    padding-top: 0.05%;
+    padding-bottom: 0.05%;
+    background-color: rgba(201, 187, 170, 0.55);
+}
+.dropdown-menu > li > a {
+    background-color: rgba(201, 187, 170, 0.55);
+}
+

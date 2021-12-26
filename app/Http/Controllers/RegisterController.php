@@ -15,10 +15,12 @@ class RegisterController extends Controller
 
     public function login(Request $request)
     {
-        $email = $request->input('email');
-        $password = $request->input('password');
-        $user = User::where('email', $email)->first();
-        Auth::login($user);
+        $credentials = $request->validate([
+            'email' => ['required','email'],
+            'password' => ['required']
+        ]);
+        Auth::attempt($credentials);
+        // todo jak sie poda zle haslo to ma nie isc do homa
         return redirect()->route('home');
     }
 

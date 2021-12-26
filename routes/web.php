@@ -48,7 +48,7 @@ Route::middleware('guest')->group(
 );
 
 
-Route::middleware(['can:isAdmin'])->group(
+Route::middleware(['can:Admin'])->group(
     function () {
         Route::get(
             '/patient/all', [PatientController::class, 'patientHome']

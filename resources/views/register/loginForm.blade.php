@@ -8,7 +8,7 @@
         <form method="POST" action="{{ url()->route('login') }}">
             @csrf
             <div class="item_registerForm">
-                <label for="email" class="form-label">Email address</label>
+                <label for="email" class="form-label">adres e-mail</label>
                 <input
                     type="email"
                     class="form-control"
@@ -20,7 +20,7 @@
                 >
             </div>
             <div class="item_registerForm">
-                <label for="password" class="form-label">password</label>
+                <label for="password" class="form-label">hasło</label>
                 <input
                     type="password"
                     class="form-control"
