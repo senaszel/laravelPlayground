@@ -2,7 +2,9 @@
 
 <div id="navContainer"></div>
 <nav id="navNav">
-    <ul class="nav w-100 d-flex justify-content-between">
+    <ul id="flex-container" class="nav">
+        <img
+             id="banner" src="{{ asset('banner.svg') }}" alt="banner szczepimy.sie">
         @guest
             <li class="navItem">
                 <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Aktualności</a>
@@ -11,7 +13,8 @@
 
         @can('Patient')
             <li class="navItem">
-                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Aktualności dla Pacjentów</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Aktualności dla
+                    Pacjentów</a>
             </li>
             <li class="navItem">
                 <a class="nav-link disabled" aria-current="page" href="#">Wnioskuj o szczepienie</a>
@@ -79,7 +82,7 @@
                 <a class="nav-link disabled" aria-current="page" href="#">Harmonogram pracy</a>
             </li>
         @endcan
-        <li class="navItem">
+        <li class="navItem" id="rightmost">
             <div class="dropdown">
                 <a class="nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                    data-bs-toggle="dropdown" aria-expanded="false">
