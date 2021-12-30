@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             $table->string('description');
             $table->string('content');
             $table->string('author');
-            $table->int('publisher_id');
+            $table->foreignId('publisher_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

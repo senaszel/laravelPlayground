@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Patient;
-use App\Providers\RouteServiceProvider;
+use App\Enums\UserRole;
+use App\Models\User;
 
 class PatientController extends Controller
 {
@@ -12,7 +12,7 @@ class PatientController extends Controller
         return view(
             'patients-home',
             [
-                'patients' => Patient::all(),
+                'patients' => User::where('role',UserRole::PATIENT)->get(),
                 'chosenpatient' => null
             ]
         );
@@ -23,8 +23,8 @@ class PatientController extends Controller
         return view(
             'patients-home',
             [
-                'patients' => Patient::all(),
-                'chosenpatient' => Patient::find($id)
+                'patients' => User::where('role',UserRole::PATIENT)->get(),
+                'chosenpatient' => User::find($id)
             ]
         );
     }

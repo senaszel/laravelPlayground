@@ -16,9 +16,9 @@ class CreateApplicationsTable extends Migration
     {
         Schema::create('applications', function (Blueprint $table) {
             $table->id();
-            $table->int('patient_id');
-            $table->int('vaccine_id');
-            $table->int('doctor_id');
+            $table->foreignId('patient_id')->references('id')->on('users');
+            $table->foreignId('vaccine_id')->references('id')->on('vaccines');
+            $table->foreignId('doctor_id')->references('id')->on('users');
             $table->enum('status',ApplicationStatus::TYPES);
             $table->timestamp('date_vaccination');
             $table->timestamps();
