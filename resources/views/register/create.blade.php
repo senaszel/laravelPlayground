@@ -8,13 +8,13 @@
         <form method="POST" action="{{route('storeNewUser')}}">
             @csrf
             <div class="item_registerForm">
-                <label for="username" class="form-label">username</label>
+                <label for="username" class="form-label">nazwa konta</label>
                 <input
                     type="text"
                     class="form-control"
                     name="username"
                     id="username"
-                    placeholder="your username"
+                    placeholder="nazwa konta"
                     value="{{ old('username') }}"
                     required
                 >
@@ -23,13 +23,13 @@
                 @enderror
             </div>
             <div class="item_registerForm">
-                <label for="email" class="form-label">Email address</label>
+                <label for="email" class="form-label">adres email</label>
                 <input
                     type="email"
                     class="form-control"
                     name="email"
                     id="email"
-                    placeholder="your email ie. name@example.com"
+                    placeholder="podaj email np. nazwa@szczepimy.sie"
                     value="{{ old('email')   }}"
                     required
                 >
@@ -38,13 +38,13 @@
                 @enderror
             </div>
             <div class="item_registerForm">
-                <label for="password" class="form-label">password</label>
+                <label for="password" class="form-label">hasło</label>
                 <input
                     type="password"
                     class="form-control"
                     name="password"
                     id="password"
-                    placeholder="your password"
+                    placeholder="twoje hasło"
                     required
                 >
                 @error('password')
@@ -52,8 +52,10 @@
                 @enderror
             </div>
             <div class="item_registerForm">
-                <button id="registerButton"
-                        type="submit">
+                <button
+                    id="registerButton"
+                    type="submit"
+                >
                     Zarejestruj
                 </button>
             </div>

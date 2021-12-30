@@ -1,15 +1,23 @@
 #container_registerForm {
-    display: grid;
+    display: block;
     grid-template-columns: repeat(1, 1fr);
-    padding: 5% 0;
-    background-color: #b6b6b6;
+    background-color: #ffffff;
+    height: 100%;
+}
+#container_registerForm > form {
+    background-color: #5ba2f4;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10% 0;
+    width: 80%;
 }
 
 .item_registerForm {
     padding: 10px;
     margin: 0 25% 1%;
     width: 50%;
-    background-color: rgb(162, 86, 86);
+    background-color: rgb(201, 187, 170);
     text-align: center;
     font-size: 2rem;
 }
@@ -25,9 +33,14 @@
     width: 100%;
 }
 
+div.item_registerForm:last-child {
+    margin-top: 8%;
+}
+
 .errorMSG {
     text-transform: capitalize;
     font-size: small;
     color: red;
     margin-top: 0.5rem;
 }
+

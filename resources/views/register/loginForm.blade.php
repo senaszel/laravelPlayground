@@ -3,9 +3,11 @@
     <x-layout.navigation></x-layout.navigation>
 
     <link rel="stylesheet" href="{{ asset('css/register/register-form.css') }}">
-
     <section id="container_registerForm">
-        <form method="POST" action="{{ url()->route('login') }}">
+        <form
+            method="POST"
+            action="{{ url()->route('login') }}"
+        >
             @csrf
             <div class="item_registerForm">
                 <label for="email" class="form-label">adres e-mail</label>
@@ -14,7 +16,7 @@
                     class="form-control"
                     name="email"
                     id="email"
-                    placeholder="your email ie. name@example.com"
+                    placeholder="podaj email np. nazwa@szczepimy.sie"
                     value="{{ old('email') }}"
                     required
                 >
@@ -26,7 +28,7 @@
                     class="form-control"
                     name="password"
                     id="password"
-                    placeholder="your password"
+                    placeholder="twoje hasło"
                     required
                 >
             </div>
