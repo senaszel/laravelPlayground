@@ -1,0 +1,21 @@
+aside {
+    background-color: #5ba2f4;
+}
+
+#sideMenuVerticalContainer {
+    background-color: #5ba2f4;
+    text-align: center;
+}
+
+#sideMenuVerticalBarUl {
+    margin-top: 10%;
+    background-color: rgba(201, 187, 170, 0.55);
+    list-style: none;
+}
+
+#sideMenuVerticalBarUl > li {
+    /*border: 2px solid black;*/
+    margin-top: 2.5%;
+    margin-bottom: 2.5%;
+    text-align: start;
+}

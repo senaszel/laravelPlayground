@@ -1,7 +1,7 @@
 #layoutContainer {
     background-color: #edf2f7;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 17% 83%;
     grid-template-areas:
         "nav nav"
         "aside main";
@@ -9,10 +9,9 @@
 
 aside {
     grid-area: aside;
-    background-color: blue;
 }
 
 main {
     grid-area: main;
-    background-color: indianred;
+    background-color: rgb(201, 187, 170);
 }
