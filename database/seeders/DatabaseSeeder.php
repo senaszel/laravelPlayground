@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Personal;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -16,12 +15,13 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(20)->create();
-        Personal::factory(10)->create();
 
         $this->call([
             OneOfEachRoleSeeder::class,
+            PersonalSeeder::class,
             VaccineSeeder::class,
             ApplicationSeeder::class,
+            NewsSeeder::class,
         ]);
     }
 }

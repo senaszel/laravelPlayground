@@ -4,7 +4,6 @@ namespace Database\Factories;
 
 use App\Enums\ApplicationStatus;
 use App\Enums\UserRole;
-use App\Enums\UserTitle;
 use App\Models\Application;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
