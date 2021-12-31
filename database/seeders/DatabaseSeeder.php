@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             OneOfEachRoleSeeder::class,
+            VaccineSeeder::class,
         ]);
     }
 }
