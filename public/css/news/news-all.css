@@ -1,0 +1,32 @@
+h1 {
+    color: #320254;
+}
+
+#all-news-container {
+    margin: 3% 10% 0;
+    padding: 5% 5%;
+    background-color: #5ba2f4;
+    width: 80%;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    justify-content: space-evenly;
+    column-gap: 5%;
+}
+
+.newsMiniature {
+    align-content: start;
+    width: 100%;
+    background-color: rgb(201, 187, 170);
+    display: grid;
+    place-items: center;
+    padding:5%;
+    margin: 5%;
+}
+
+.newsMiniature a h5 {
+    color: #320254;
+}
+
+.newsMiniature a p {
+    margin-left: auto;
+}

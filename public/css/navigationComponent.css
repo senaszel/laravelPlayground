@@ -39,10 +39,6 @@
 .navItem {
     background-color: rgba(201, 187, 170, 0.55);
     border: 3px solid rgba(3, 76, 129, 0.45);
-    min-width: 15%;
-    max-width: 15%;
-    min-height: available;
-    max-height: available;
     padding: 0.2%;
 }
 
@@ -51,7 +47,6 @@
     /*border: 1px solid 	#7f858c;*/
     text-align: center;
     color: black;
-    /*height: 2rem;*/
 }
 
 .dropdown-menu {

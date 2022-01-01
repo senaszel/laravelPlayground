@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -16,9 +17,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get(
     '/',
-    function () {
-        return view('home');
-    }
+    [NewsController::class,'index']
 )->name('home');
 Route::GET(
     '/logout',

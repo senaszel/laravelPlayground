@@ -1,5 +1,5 @@
 @props([
-'menuItems'
+    'menuItems'
 ])
 
 <link rel="stylesheet" href="{{ asset('css/sideMenu.css') }}">
