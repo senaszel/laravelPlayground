@@ -1,9 +1,11 @@
-<?php
+<?php /** @noinspection ALL */
 
 namespace App\Http\Controllers;
 
 use App\Models\News;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
@@ -14,9 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view(
-            'home'
-        );
+        return view('home');
     }
 
     /**
@@ -26,7 +26,7 @@ class NewsController extends Controller
      */
     public function create()
     {
-        //
+        return view('news.add-new-news');
     }
 
     /**
@@ -37,7 +37,21 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => ['required', 'max:150'],
+            'description' => ['required', 'max:150'],
+            'content' => ['required', 'max:2000'],
+        ]);
+
+        $newNews = News::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'content' => $request['content'],
+            'author' => $request->author ?? Auth::user()->username,
+            'publisher_id' => Auth::user()->id,
+        ]);
+
+        return redirect('news/' . $newNews->id);
     }
 
     /**
@@ -48,7 +62,8 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //
+        //ddd($news);
+        return view('news.show-news', compact('news', $news));
     }
 
     /**
@@ -59,7 +74,8 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+//        ddd([$news->title,$news]);
+        return view('news.edit-news')->with('news', $news);
     }
 
     /**
@@ -71,7 +87,19 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        // ddd(['update',$request,$news]);
+
+        $request->validate([
+            'title' => ['required', 'max:150'],
+            'description' => ['required', 'max:150'],
+            'content' => ['required', 'max:2000'],
+        ]);
+        $request['author'] = $request->author ?? Auth::user()->username;
+        $request['publisher_id'] = Auth::user()->id;
+
+        $news->update($request->all());
+
+        return redirect()->route('show-news',$news);
     }
 
     /**
@@ -82,6 +110,8 @@ class NewsController extends Controller
      */
     public function destroy(News $news)
     {
-        //
+        $news->delete();
+
+        return redirect('');
     }
 }

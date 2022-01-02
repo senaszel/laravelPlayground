@@ -36,10 +36,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li class="navItem">
-                            <a class="nav-link disabled" aria-current="page" href="#">Widoczne dla pacjentów</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Widoczne dla pacjentów</a>
                         </li>
                         <li class="navItem">
-                            <a class="nav-link disabled" aria-current="page" href="#">Dodaj nowy wpis</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('create-news') }}">Dodaj nowy wpis</a>
                         </li>
                     </ul>
                 </div>

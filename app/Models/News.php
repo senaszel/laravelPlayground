@@ -11,4 +11,14 @@ use Illuminate\Database\Eloquent\Model;
 class News extends Model
 {
     use HasFactory;
+
+//    protected $guarded = [];
+
+    protected $fillable = [
+        'title',
+        'description',
+        'content',
+        'author',
+        'publisher_id',
+    ];
 }

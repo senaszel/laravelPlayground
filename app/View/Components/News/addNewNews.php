@@ -1,11 +1,10 @@
 <?php
 
-namespace App\View\Components\News;
+namespace App\View\Components\news;
 
-use App\Models\News;
 use Illuminate\View\Component;
 
-class AllNews extends Component
+class addNewNews extends Component
 {
     /**
      * Create a new component instance.
@@ -24,10 +23,6 @@ class AllNews extends Component
      */
     public function render()
     {
-        $allnews = News::all()->sortByDesc('updated_at');
-        return view('components.news.all-news', [
-            'allnews' => $allnews,
-        ]);
+        return view('components.news.add-new-news');
     }
-
 }

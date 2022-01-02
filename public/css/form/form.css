@@ -1,0 +1,90 @@
+.formContainer {
+    display: block;
+    grid-template-columns: repeat(1, 1fr);
+    background-color: #ffffff;
+    height: 100%;
+}
+
+.formContainer > form {
+    background-color: #5ba2f4;
+    margin-top: 3%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 10% 0;
+    width: 80%;
+}
+
+.formItem {
+    padding: 10px;
+    margin: 0 25% 1%;
+    width: 50%;
+    background-color: rgb(201, 187, 170);
+    text-align: center;
+    font-size: 2rem;
+}
+
+.formItem:last-child {
+    margin: 0 25%;
+}
+
+.actionButton {
+    color: blue;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+div.formItem:last-child {
+    margin-top: 8%;
+}
+
+.errorMSG {
+    text-transform: capitalize;
+    font-size: small;
+    color: red;
+    margin-top: 0.5rem;
+}
+
+.buttonEdycja {
+    color: green;
+    border: 3px solid green;
+    text-decoration: none;
+    padding: 2%;
+}
+
+.BannerEdycja {
+    background-color: rgba(0, 128, 0, 0.5);
+    border: 1px solid green;
+    margin-bottom: 5%;
+}
+
+.BannerEdycja > .actionButton {
+    color: green;
+    border: 1px solid green;
+    text-transform: full-width;
+}
+
+.gridIt {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 5%;
+}
+
+.nonbuttonPowrot {
+    text-decoration: none;
+    color: mediumblue;
+    border: 3px solid mediumblue;
+    align-self: stretch;
+    background-color: #ffffff;
+}
+
+.BannerDodajNowy {
+    background-color: #5ba2f4;
+    border: 1px solid #5BA2F4FF;
+    margin-bottom: 5%;
+}
+.BannerDodajNowy > .actionButton {
+    color: #5BA2F4FF;
+    border: 1px solid #5BA2F4FF;
+    text-transform: full-width;
+}

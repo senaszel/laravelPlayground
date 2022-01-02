@@ -6,7 +6,7 @@
             <div class="newsMiniature"
                  style="background-color:
                             {{ \App\Helpers\RandomColor::insert($news->id) }}">
-                <a href="#">
+                <a href="{{ url('',['news',$news]) }}">
                         <h5>
                             {{ $news->title }}
                         </h5>
