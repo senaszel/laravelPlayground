@@ -52,10 +52,10 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li class="navItem">
-                            <a class="nav-link disabled" aria-current="page" href="#">Wszyscy użytkownicy</a>
+                            <a class="nav-link active" aria-current="page" href="{{ url(\App\Models\User::latestID()) }}">Wszyscy użytkownicy</a>
                         </li>
                         <li class="navItem">
-                            <a class="nav-link disabled" aria-current="page" href="#">Dodaj nowego użytkownika</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('create-user') }}">Dodaj nowego użytkownika</a>
                         </li>
                     </ul>
                 </div>

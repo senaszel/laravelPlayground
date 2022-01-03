@@ -6,11 +6,8 @@
 }
 #container_registerForm > form {
     background-color: #5ba2f4;
-    margin-top: 3%;
-    margin-left: 10%;
-    margin-right: 10%;
+    margin: 3% 3% 0;
     padding: 10% 0;
-    width: 80%;
 }
 
 .item_registerForm {
@@ -19,7 +16,6 @@
     width: 50%;
     background-color: rgb(201, 187, 170);
     text-align: center;
-    font-size: 2rem;
 }
 
 .item_registerForm:last-child {
@@ -44,3 +40,20 @@ div.item_registerForm:last-child {
     margin-top: 0.5rem;
 }
 
+.BannerDodajNowy {
+    background-color: #5ba2f4;
+    border: 1px solid #5BA2F4FF;
+    margin-bottom: 5%;
+    font-size: 2rem;
+}
+
+.BannerDodajNowy > .actionButton {
+    color: #5BA2F4FF;
+    border: 1px solid #5BA2F4FF;
+    text-transform: full-width;
+}
+
+.item_registerForm > #registerButton {
+    text-transform: full-width;
+    font-size: 2rem;
+}

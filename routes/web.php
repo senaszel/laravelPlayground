@@ -3,6 +3,7 @@
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +62,10 @@ Route::middleware(['can:Admin'])->group(
             'patient/{id}', [PatientController::class, 'patientHomeWithChosenPatient']
         )->name('patient-id');
 
+
+        // NEWS NEWS NEWS NEWS NEWS NEWS NEWS
+        // NEWS NEWS NEWS NEWS NEWS NEWS NEWS
+
         Route::get(
             'createnews',[NewsController::class,'create']
         )->name('create-news');
@@ -77,6 +82,35 @@ Route::middleware(['can:Admin'])->group(
         Route::post(
             'news/destroy/{news}', [NewsController::class, 'destroy']
         )->name('destroy-news');
+
+
+        // USER USER USER USER USER USER USER
+        // USER USER USER USER USER USER USER
+
+        Route::get(
+            'user/all/{user}',[UserController::class,'index']
+        )->name('index-user');
+        Route::get(
+            'user/create',[UserController::class,'create']
+        )->name('create-user');
+        Route::post(
+            'user/store', [UserController::class, 'store']
+        )->name('store-user');
+        Route::get(
+            'user/{user}', [UserController::class, 'show']
+        )->name('show-user');
+
+        Route::get(
+            'user/edit/{user}', [UserController::class, 'edit']
+        )->name('edit-user');
+        Route::post(
+            'user/update/{user}', [UserController::class, 'update']
+        )->name('update-user');
+        Route::post(
+            'user/destroy/{user}', [UserController::class, 'destroy']
+        )->name('destroy-user');
+
+
 
     }
 );

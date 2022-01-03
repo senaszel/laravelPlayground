@@ -1,21 +1,31 @@
 aside {
     background-color: #5ba2f4;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-areas:
+        "side main";
 }
 
 #sideMenuVerticalContainer {
+    grid-area: side;
     background-color: #5ba2f4;
     text-align: center;
 }
 
+#main {
+    background-color: #ffffff;
+}
+
 #sideMenuVerticalBarUl {
-    margin-top: 10%;
+    margin: 0;
     background-color: rgba(201, 187, 170, 0.55);
     list-style: none;
 }
 
 #sideMenuVerticalBarUl > li {
     /*border: 2px solid black;*/
-    margin-top: 2.5%;
-    margin-bottom: 2.5%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     text-align: start;
 }
