@@ -64,7 +64,7 @@
 
         @can('Nurse')
             <li class="navItem">
-                <a class="nav-link disabled" aria-current="page" href="#">Zarejestruj pacjenta</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('create-patient') }}">Zarejestruj pacjenta</a>
             </li>
             <li class="navItem">
                 <a class="nav-link disabled" aria-current="page" href="#">Zaplanuj szczepienia</a>

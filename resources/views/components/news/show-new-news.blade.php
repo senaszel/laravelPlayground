@@ -3,7 +3,7 @@
 <section class="formContainer">
     <div class="inner"
          style="background-color:
-                            {{ \App\Helpers\RandomColor::insert($news->id) }}">>
+                            {{ \App\Helpers\RandomColor::insert($news->id) }}">
 
         <div class="formItem">
             <p>{{ $title }}</p>

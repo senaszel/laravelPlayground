@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\NurseController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\UserController;
@@ -17,37 +18,48 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get(
-    '/',
-    [NewsController::class, 'index']
+    '/', [
+        NewsController::class, 'index'
+    ]
 )->name('home');
 
 Route::get(
-    'news/{news}', [NewsController::class, 'show']
+    'news/{news}', [
+        NewsController::class, 'show'
+    ]
 )->name('show-news');
 
 Route::GET(
-    '/logout',
-    [RegisterController::class, 'logout']
+    '/logout', [
+        RegisterController::class, 'logout'
+    ]
 )->name('logout');
 
 // todo poprawić namey i metody w tym crudzie
 Route::middleware('guest')->group(
     function () {
         Route::GET(
-            '/register/create',
-            [RegisterController::class, 'create']
+            '/register/create', [
+                RegisterController::class, 'create'
+            ]
         )->name('createNewUser');
+
         Route::POST(
-            '/register/store',
-            [RegisterController::class, 'store']
+            '/register/store', [
+                RegisterController::class, 'store'
+            ]
         )->name('storeNewUser');
+
         Route::GET(
-            '/login',
-            [RegisterController::class, 'showLogInForm']
+            '/login', [
+                RegisterController::class, 'showLogInForm'
+            ]
         )->name('loginForm');
+
         Route::POST(
-            '/login',
-            [RegisterController::class, 'login']
+            '/login', [
+                RegisterController::class, 'login'
+            ]
         )->name('login');
     }
 );
@@ -56,10 +68,15 @@ Route::middleware(['can:Admin'])->group(
     function () {
 
         Route::get(
-            '/patient/all', [PatientController::class, 'patientHome']
+            '/patient/all', [
+                PatientController::class, 'patientHome'
+            ]
         )->name('patient-all');
+
         Route::get(
-            'patient/{id}', [PatientController::class, 'patientHomeWithChosenPatient']
+            'patient/{id}', [
+                PatientController::class, 'patientHomeWithChosenPatient'
+            ]
         )->name('patient-id');
 
 
@@ -67,20 +84,33 @@ Route::middleware(['can:Admin'])->group(
         // NEWS NEWS NEWS NEWS NEWS NEWS NEWS
 
         Route::get(
-            'createnews',[NewsController::class,'create']
+            'createnews', [
+                NewsController::class, 'create'
+            ]
         )->name('create-news');
+
         Route::post(
-            'news/store', [NewsController::class, 'store']
+            'news/store', [
+                NewsController::class, 'store'
+            ]
         )->name('store-news');
 
         Route::get(
-            'news/edit/{news}', [NewsController::class, 'edit']
+            'news/edit/{news}', [
+                NewsController::class, 'edit'
+            ]
         )->name('edit-news');
+
         Route::post(
-            'update/{news}', [NewsController::class, 'update']
+            'update/{news}', [
+                NewsController::class, 'update'
+            ]
         )->name('update-news');
+
         Route::post(
-            'news/destroy/{news}', [NewsController::class, 'destroy']
+            'news/destroy/{news}', [
+                NewsController::class, 'destroy'
+            ]
         )->name('destroy-news');
 
 
@@ -88,30 +118,82 @@ Route::middleware(['can:Admin'])->group(
         // USER USER USER USER USER USER USER
 
         Route::get(
-            'user/all/{user}',[UserController::class,'index']
+            'user/all/{user}', [
+                UserController::class, 'index'
+            ]
         )->name('index-user');
+
         Route::get(
-            'user/create',[UserController::class,'create']
+            'user/create', [
+                UserController::class, 'create'
+            ]
         )->name('create-user');
+
         Route::post(
-            'user/store', [UserController::class, 'store']
+            'user/store', [
+                UserController::class, 'store'
+            ]
         )->name('store-user');
+
         Route::get(
-            'user/{user}', [UserController::class, 'show']
+            'user/show/{user}', [
+                UserController::class, 'show'
+            ]
         )->name('show-user');
 
         Route::get(
-            'user/edit/{user}', [UserController::class, 'edit']
+            'user/edit/{user}', [
+                UserController::class, 'edit'
+            ]
         )->name('edit-user');
+
         Route::post(
-            'user/update/{user}', [UserController::class, 'update']
+            'user/update/{user}', [
+                UserController::class, 'update'
+            ]
         )->name('update-user');
+
         Route::post(
-            'user/destroy/{user}', [UserController::class, 'destroy']
+            'user/destroy/{user}', [
+                UserController::class, 'destroy'
+            ]
         )->name('destroy-user');
-
-
 
     }
 );
 
+
+Route::get(
+    'nurse/create', [
+        NurseController::class, 'create'
+    ]
+)->name('create-patient');
+
+Route::post(
+    'nurse/store', [
+        NurseController::class, 'store'
+    ]
+)->name('store-patient');
+
+Route::get(
+    'nurse/show/{user}', [
+        NurseController::class, 'show'
+    ]
+)->name('show-patient');
+
+Route::get(
+    'nurse/mail-patient/{user}', [
+        NurseController::class, 'mailPatient'
+    ]
+)->name('mail-patient');
+
+Route::get(
+    'nurse/confirm-mail-patient/{user}', [
+        NurseController::class, 'confirmMail']
+)->name('confirm-mail-patient');
+
+Route::get(
+    'nurse/print-patient/{user}', [
+        NurseController::class, 'print'
+    ]
+)->name('print-patient');
