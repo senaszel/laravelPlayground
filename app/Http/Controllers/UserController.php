@@ -105,7 +105,7 @@ class UserController extends Controller
         $user->role = $request->role;
         $user->title = RoleTitleMatcher::cast($request->role);
         $user->save();
-        
+
         return redirect()->route('show-user', $user);
     }
 
@@ -117,7 +117,7 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        $user->delete();
+        User::where('id',$user->id)->delete();
 
         return redirect(User::latestID());
     }
