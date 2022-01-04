@@ -10,7 +10,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class AddApplicationsForEachPatients extends Seeder
+class AddApplicationsForEachPatientsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,19 +21,19 @@ class AddApplicationsForEachPatients extends Seeder
     public function run()
     {
         $faker = Factory::create();
-        $patient = User::where('role', UserRole::PATIENT)->get('id');
-        for ($i = 1; $i <= User::where('role', UserRole::PATIENT)->count(); $i++) {
-            while (Application::where('patient_id', $i)->count() < 10) {
-                DB::table('applications')->insert([
-                    'patient_id' => $i,
-                    'vaccine_id' => random_int(1, 3),
-                    'doctor_id' => random_int(1, User::where('role', UserRole::DOCTOR)->count()),
-                    'status' => $faker->randomElement(ApplicationStatus::TYPES),
-                    'date_vaccination' => $faker->dateTime,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+        $patients = User::where('role', UserRole::PATIENT)->get('id');
+            foreach ($patients as $i) {
+                while (Application::where('patient_id', $i->id)->count() < 10) {
+                    DB::table('applications')->insert([
+                        'patient_id' => $i->id,
+                        'vaccine_id' => random_int(1, 3),
+                        'doctor_id' => random_int(1, User::where('role', UserRole::DOCTOR)->count()),
+                        'status' => $faker->randomElement(ApplicationStatus::TYPES),
+                        'date_vaccination' => $faker->dateTime,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                }
             }
         }
-    }
 }
