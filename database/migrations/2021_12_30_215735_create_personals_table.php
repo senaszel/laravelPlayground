@@ -16,7 +16,7 @@ class CreatePersonalsTable extends Migration
     {
         Schema::create('personals', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('user_id')->nullable()->references('id')->on('users')->nullOnDelete();
             $table->string('firstname');
             $table->string('lastname');
             $table->string('adress');

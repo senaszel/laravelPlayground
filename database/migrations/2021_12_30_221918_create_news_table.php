@@ -19,7 +19,7 @@ class CreateNewsTable extends Migration
             $table->string('description');
             $table->string('content');
             $table->string('author');
-            $table->foreignId('publisher_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreignId('publisher_id')->nullable()->references('id')->on('users')->nullOnDelete();
             $table->timestamps();
         });
     }
