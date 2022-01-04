@@ -5,6 +5,7 @@ aside {
     grid-template-columns: 25% 75%;
     grid-template-areas:
         "side main";
+    height: 100%;
 }
 
 #sideMenuVerticalContainer {
