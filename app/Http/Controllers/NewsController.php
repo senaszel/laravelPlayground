@@ -62,7 +62,6 @@ class NewsController extends Controller
      */
     public function show(News $news)
     {
-        //ddd($news);
         return view('news.show-news', compact('news', $news));
     }
 
@@ -74,7 +73,6 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-//        ddd([$news->title,$news]);
         return view('news.edit-news')->with('news', $news);
     }
 
@@ -87,8 +85,6 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        // ddd(['update',$request,$news]);
-
         $request->validate([
             'title' => ['required', 'max:150'],
             'description' => ['required', 'max:150'],

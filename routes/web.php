@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 */
 
+
+
+// ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY
+// ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY
 Route::get(
     '/', [
         NewsController::class, 'index'
@@ -35,6 +39,8 @@ Route::GET(
     ]
 )->name('logout');
 
+// GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST
+// GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST GUEST
 // todo poprawić namey i metody w tym crudzie
 Route::middleware('guest')->group(
     function () {
@@ -64,6 +70,9 @@ Route::middleware('guest')->group(
     }
 );
 
+// ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN
+// ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN
+// ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN
 Route::middleware(['can:Admin'])->group(
     function () {
 
@@ -79,9 +88,9 @@ Route::middleware(['can:Admin'])->group(
             ]
         )->name('patient-id');
 
-
-        // NEWS NEWS NEWS NEWS NEWS NEWS NEWS
-        // NEWS NEWS NEWS NEWS NEWS NEWS NEWS
+// ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN
+// NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS
+// NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS NEWS
 
         Route::get(
             'createnews', [
@@ -113,9 +122,9 @@ Route::middleware(['can:Admin'])->group(
             ]
         )->name('destroy-news');
 
-
-        // USER USER USER USER USER USER USER
-        // USER USER USER USER USER USER USER
+// ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN ADMIN
+// USER USER USER USER USER USER USER SER USER USER USER USER USER USER SER USER USER USER USER USER
+// USER USER USER USER USER USER USER SER USER USER USER USER USER USER SER USER USER USER USER USER
 
         Route::get(
             'user/all/{user}', [
@@ -162,38 +171,45 @@ Route::middleware(['can:Admin'])->group(
     }
 );
 
+// NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE
+// NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE
+// NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE
+Route::middleware(['can:Nurse'])->group(
+    function () {
 
-Route::get(
-    'nurse/create', [
-        NurseController::class, 'create'
-    ]
-)->name('create-patient');
+        Route::get(
+            'nurse/create', [
+                NurseController::class, 'create'
+            ]
+        )->name('create-patient');
 
-Route::post(
-    'nurse/store', [
-        NurseController::class, 'store'
-    ]
-)->name('store-patient');
+        Route::post(
+            'nurse/store', [
+                NurseController::class, 'store'
+            ]
+        )->name('store-patient');
 
-Route::get(
-    'nurse/show/{user}', [
-        NurseController::class, 'show'
-    ]
-)->name('show-patient');
+        Route::get(
+            'nurse/show/{user}', [
+                NurseController::class, 'show'
+            ]
+        )->name('show-patient');
 
-Route::get(
-    'nurse/mail-patient/{user}', [
-        NurseController::class, 'mailPatient'
-    ]
-)->name('mail-patient');
+        Route::get(
+            'nurse/mail-patient/{user}', [
+                NurseController::class, 'mailPatient'
+            ]
+        )->name('mail-patient');
 
-Route::get(
-    'nurse/confirm-mail-patient/{user}', [
-        NurseController::class, 'confirmMail']
-)->name('confirm-mail-patient');
+        Route::get(
+            'nurse/confirm-mail-patient/{user}', [
+                NurseController::class, 'confirmMail']
+        )->name('confirm-mail-patient');
 
-Route::get(
-    'nurse/print-patient/{user}', [
-        NurseController::class, 'print'
-    ]
-)->name('print-patient');
+        Route::get(
+            'nurse/print-patient/{user}', [
+                NurseController::class, 'print'
+            ]
+        )->name('print-patient');
+    }
+);

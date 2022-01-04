@@ -24,7 +24,6 @@
             </p>
         </div>
 
-        {{--        <div class="formItem">--}}
         <div class="item_registerForm BannerDodajNowy">
             <button class="actionButton"
                     type="submit"

@@ -6,6 +6,7 @@ use App\Enums\UserRole;
 use App\Enums\UserTitle;
 use App\Helpers\RoleTitleMatcher;
 use App\Models\User;
+use DeepCopy\TypeMatcher\TypeMatcher;
 use Illuminate\Http\Request;
 use function PHPUnit\Framework\isEmpty;
 
@@ -98,16 +99,13 @@ class UserController extends Controller
             'role' => ['required'],
         ]);
 
-        $title = RoleTitleMatcher::cast($request->role);
-
-        $user->update([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => bcrypt($request->password),
-            'role' => $request->role,
-            'title' => $title,
-        ]);
-
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = bcrypt($request->password);
+        $user->role = $request->role;
+        $user->title = RoleTitleMatcher::cast($request->role);
+        $user->save();
+        
         return redirect()->route('show-user', $user);
     }
 
