@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-
 // ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY
 // ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY ANY
 Route::get(
@@ -203,7 +202,8 @@ Route::middleware(['can:Nurse'])->group(
 
         Route::get(
             'nurse/confirm-mail-patient/{user}', [
-                NurseController::class, 'confirmMail']
+                NurseController::class, 'confirmMail'
+            ]
         )->name('confirm-mail-patient');
 
         Route::get(
@@ -211,5 +211,59 @@ Route::middleware(['can:Nurse'])->group(
                 NurseController::class, 'print'
             ]
         )->name('print-patient');
+    }
+);
+
+// PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT
+// PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT
+// PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT
+Route::middleware(['can:Patient'])->group(
+    function () {
+
+// PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT
+// APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION
+// APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION APPLICATION
+        Route::get(
+            'applications/index', [
+                PatientController::class, 'index'
+            ]
+        )->name('patient-applications');
+
+        Route::get(
+            'application/new', [
+                PatientController::class, 'create'
+            ]
+        )->name('patient-create-application');
+
+        Route::post(
+            'application/store', [
+                PatientController::class, 'store'
+            ]
+        )->name('patient-store-application');
+
+        Route::get(
+            'application/show/{application}', [
+                PatientController::class, 'show'
+            ]
+        )->name('patient-show-application');
+
+        Route::get(
+            'application/edit/{application}', [
+                PatientController::class, 'edit'
+            ]
+        )->name('patient-edit-application');
+
+        Route::post(
+            'application/update', [
+                PatientController::class, 'update'
+            ]
+        )->name('patient-update-application');
+
+        Route::post(
+            'application/delete/{application}', [
+                PatientController::class, 'destroy'
+            ]
+        )->name('patient-destroy-application');
+
     }
 );

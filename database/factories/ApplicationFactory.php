@@ -20,6 +20,8 @@ class ApplicationFactory extends Factory
      */
     public function definition()
     {
+        // todo ta i prawdopodobnie inne factory są do poprawy
+        // random int z przedziały 1 do liczba osob o danej roli nie losuje jedynie osob o wymaganej roli
         return [
                  'patient_id'=>random_int(1,User::where('role',UserRole::PATIENT)->count()),
                  'vaccine_id'=>random_int(1,3),

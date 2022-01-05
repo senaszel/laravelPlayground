@@ -1,0 +1,74 @@
+.formContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    background-color: #ffffff;
+    height: 100%;
+}
+
+.inner {
+    justify-self: stretch;
+    align-self: stretch;
+    background-color: #5ba2f4;
+    margin: 3% 3% 0;
+    padding: 10% 0;
+}
+
+.formItem {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    padding: 10px;
+    margin: 0 15% 1%;
+    width: 70%;
+    background-color: rgb(201, 187, 170);
+    text-align: center;
+    height: fit-content;
+}
+
+.formItem > label {
+    justify-self: left;
+}
+
+.formItem > p {
+    background-color: rgba(26, 32, 44, 0.2);
+    margin: 0;
+    padding: 1%;
+    justify-self: left;
+    text-align: start;
+    inline-size: 100%;
+    overflow-wrap: break-word;
+    height: fit-content;
+}
+
+.vaccineBanner {
+    background-color: rgba(255, 255, 255, 0.5);
+    color: #5ba2f4;
+    font-size: 2rem;
+    text-align: center;
+    grid-template-columns: 1fr;
+}
+
+.resignOfAppointmentBtn {
+    width: 50%;
+    color: black;
+    font-size: larger;
+    font-weight: bold;
+    background-color: #89172c;
+    display: grid;
+    place-items: center;
+    height: 2rem;
+    margin: 0;
+    margin-top: 4%;
+    padding: 0;
+    text-decoration: none;
+    justify-self: end;
+}
+
+.resignOfAppointmentBtn > button {
+    background-color: #89172c;
+    justify-self: stretch;
+    align-self: stretch;
+}
+
+.hideit {
+    background-color: #5ba2f4;
+}

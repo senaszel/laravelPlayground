@@ -17,7 +17,9 @@
                     Pacjentów</a>
             </li>
             <li class="navItem">
-                <a class="nav-link disabled" aria-current="page" href="#">Wnioskuj o szczepienie</a>
+                <a class="nav-link active" aria-current="page"
+                   href="{{ route('patient-applications') }}"
+                >Wnioskuj o szczepienie</a>
             </li>
             <li class="navItem">
                 <a class="nav-link disabled" aria-current="page" href="#">Historia szczepień</a>

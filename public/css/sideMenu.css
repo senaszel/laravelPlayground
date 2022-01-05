@@ -9,6 +9,7 @@ aside {
 }
 
 #sideMenuVerticalContainer {
+    height: 100%;
     grid-area: side;
     background-color: #5ba2f4;
     text-align: center;
@@ -16,12 +17,26 @@ aside {
 
 #main {
     background-color: #ffffff;
+    height: 100%;
 }
 
 #sideMenuVerticalBarUl {
-    margin: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 5%;
+    margin-bottom: 0;
+    padding-top: 5%;
+    padding-bottom: 5%;
     background-color: rgba(201, 187, 170, 0.55);
     list-style: none;
+}
+
+#sideMenuVerticalBarUl > li > a {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    text-decoration: none;
 }
 
 #sideMenuVerticalBarUl > li {
@@ -29,4 +44,15 @@ aside {
     margin-top: 5%;
     margin-bottom: 5%;
     text-align: start;
+    list-style: none;
+}
+
+.previousApplications {
+    color: #5ba2f4;
+    background-color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+    margin-top: 5%;
+    width: 100%;
+    padding: 0 2%;
+    text-transform: full-size-kana;
 }

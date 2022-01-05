@@ -16,6 +16,7 @@ class User extends Authenticatable
     use HasApiTokens, HasFactory, Notifiable;
 
 //    protected $guarded = [];
+
     public static function latestID()
     {
         return "user/all/".User::latest()->first()->id;

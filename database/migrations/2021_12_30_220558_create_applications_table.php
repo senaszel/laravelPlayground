@@ -19,7 +19,7 @@ class CreateApplicationsTable extends Migration
             $table->foreignId('patient_id')->nullable()->references('id')->on('users')->nullOnDelete();
             $table->foreignId('vaccine_id')->nullable()->references('id')->on('vaccines')->nullOnDelete();
             $table->foreignId('doctor_id')->nullable()->references('id')->on('users')->nullOnDelete();
-            $table->enum('status',ApplicationStatus::TYPES);
+            $table->enum('status',ApplicationStatus::TYPES)->default(ApplicationStatus::ISSUED);
             $table->timestamp('date_vaccination')->nullable();
             $table->timestamps();
         });
