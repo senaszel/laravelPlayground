@@ -50,13 +50,16 @@ class OneOfEachRoleSeeder extends Seeder
         $Doctor->password = "test123";
 
         foreach ($oneOfEachRole as $eachOne) {
-           DB::table('users')->insert([
-               'username'=>$eachOne->username,
-               'email'=>$eachOne->email,
-               'password'=>Hash::make($eachOne->password),
-               'role'=>$eachOne->role,
-               'title'=>$eachOne->title
-           ]);
+            DB::table('users')->insert([
+                'username' => $eachOne->username,
+                'email' => $eachOne->email,
+                'password' => Hash::make($eachOne->password),
+                'role' => $eachOne->role,
+                'title' => $eachOne->title,
+                'created_at' => now(),
+                'updated_at' => now(),
+                'email_verified_at' => now(),
+            ]);
         }
 
     }
