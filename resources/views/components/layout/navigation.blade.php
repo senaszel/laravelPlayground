@@ -85,7 +85,8 @@
                 <a class="nav-link disabled" aria-current="page" href="#">Dzisiejsze szczepienia</a>
             </li>
             <li class="navItem">
-                <a class="nav-link active" aria-current="page" href="{{ route('vaccines-index') }}">Rejestr szczepionek</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('vaccines-index') }}">Rejestr
+                    szczepionek</a>
             </li>
             <li class="navItem">
                 <a class="nav-link disabled" aria-current="page" href="#">Harmonogram pracy</a>
@@ -99,7 +100,8 @@
                         Zacznij tutaj!
                     @endguest
                     @auth
-                        {{ Auth::user()->title ?? " " }} {{ ucfirst(Auth::user()->username) ?? "anon" }}
+                        {{ auth()->user()->title . ' ' . ucfirst(\App\Models\Personal::where('user_id',auth()->user()->id)->first()->firstname ?? " ") }}
+                        {{ ucfirst(\App\Models\Personal::where('user_id',auth()->user()->id)->first()->lastname ?? "anon") }}
                     @endauth
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
