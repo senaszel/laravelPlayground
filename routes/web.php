@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\NurseController;
 use App\Http\Controllers\PatientController;
@@ -293,3 +294,27 @@ Route::middleware(['can:Patient'])->group(
 
     }
 );
+
+// DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR
+// DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR
+// DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR
+Route::middleware(['can:Doctor'])->group(
+    function () {
+
+// DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR
+// VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES
+// VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES VACCINES
+        Route::get(
+            'vaccines/index', [
+                DoctorController::class, 'vaccinesIndex'
+            ]
+        )->name('vaccines-index');
+
+        Route::get(
+            'vaccines/{vaccine}', [
+                DoctorController::class, 'showVaccine'
+            ]
+        )->name('vaccines-show-vaccine');
+    }
+);
+
