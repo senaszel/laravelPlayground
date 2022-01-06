@@ -4,7 +4,7 @@
 <nav id="navNav">
     <ul id="flex-container" class="nav">
         <img
-             id="banner" src="{{ asset('banner.svg') }}" alt="banner szczepimy.sie">
+            id="banner" src="{{ asset('banner.svg') }}" alt="banner szczepimy.sie">
         @guest
             <li class="navItem">
                 <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Aktualności</a>
@@ -22,10 +22,12 @@
                 >Wnioskuj o szczepienie</a>
             </li>
             <li class="navItem">
-                <a class="nav-link active" aria-current="page" href="{{ route('patient-show-applications') }}">Historia szczepień</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('patient-show-applications') }}">Historia
+                    szczepień</a>
             </li>
             <li class="navItem">
-                <a class="nav-link disabled" aria-current="page" href="#">Moje Certyfikaty szczepienia</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('patient-certificates-index') }}">Moje
+                    Certyfikaty szczepienia</a>
             </li>
         @endcan
 
@@ -38,10 +40,12 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li class="navItem">
-                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Widoczne dla pacjentów</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('home') }}">Widoczne dla
+                                pacjentów</a>
                         </li>
                         <li class="navItem">
-                            <a class="nav-link active" aria-current="page" href="{{ route('create-news') }}">Dodaj nowy wpis</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('create-news') }}">Dodaj nowy
+                                wpis</a>
                         </li>
                     </ul>
                 </div>
@@ -54,10 +58,12 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li class="navItem">
-                            <a class="nav-link active" aria-current="page" href="{{ url(\App\Models\User::latestID()) }}">Wszyscy użytkownicy</a>
+                            <a class="nav-link active" aria-current="page"
+                               href="{{ url(\App\Models\User::latestID()) }}">Wszyscy użytkownicy</a>
                         </li>
                         <li class="navItem">
-                            <a class="nav-link active" aria-current="page" href="{{ route('create-user') }}">Dodaj nowego użytkownika</a>
+                            <a class="nav-link active" aria-current="page" href="{{ route('create-user') }}">Dodaj
+                                nowego użytkownika</a>
                         </li>
                     </ul>
                 </div>
@@ -66,7 +72,8 @@
 
         @can('Nurse')
             <li class="navItem">
-                <a class="nav-link active" aria-current="page" href="{{ route('create-patient') }}">Zarejestruj pacjenta</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('create-patient') }}">Zarejestruj
+                    pacjenta</a>
             </li>
             <li class="navItem">
                 <a class="nav-link disabled" aria-current="page" href="#">Zaplanuj szczepienia</a>

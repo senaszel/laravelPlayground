@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ApplicationStatus;
 use App\Enums\UserRole;
 use App\Models\Application;
 use App\Models\User;
@@ -61,6 +62,31 @@ class PatientController extends Controller
             ->route('patient-show-application', [
                 'application' => $application->id,
             ]);
+    }
+
+    public function certificatesIndex()
+    {
+        $AuthUserId = Auth::user()->id;
+        $application = Application::where('patient_id', $AuthUserId)->orderby('created_at')->limit(1);
+        $applications = Application::all()->where('status',ApplicationStatus::DONE)->where('patient_id', $AuthUserId)->sortby('status');
+
+        return view('patient.show-certificate', [
+                'applications' => $applications,
+                'application' => $application->first(),
+            ]
+        );
+    }
+
+    public function showCertificate(Application $application)
+    {
+        $AuthUserId = Auth::user()->id;
+        $applications = Application::all()->where('status',ApplicationStatus::DONE)->where('patient_id', $AuthUserId)->sortby('status');
+
+        return view('patient.show-certificate', [
+                'applications' => $applications,
+                'application' => $application,
+            ]
+        );
     }
 
     public function showAll()

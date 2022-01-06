@@ -248,6 +248,18 @@ Route::middleware(['can:Patient'])->group(
         )->name('patient-show-applications');
 
         Route::get(
+            'certificates/index', [
+                PatientController::class, 'certificatesIndex'
+            ]
+        )->name('patient-certificates-index');
+
+        Route::get(
+            'certificates/{application}', [
+                PatientController::class, 'showCertificate'
+            ]
+        )->name('patient-show-certificate');
+
+        Route::get(
             'application/show/{application}', [
                 PatientController::class, 'show'
             ]
