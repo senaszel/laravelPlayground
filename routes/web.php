@@ -242,6 +242,12 @@ Route::middleware(['can:Patient'])->group(
         )->name('patient-store-application');
 
         Route::get(
+            'application/show/all', [
+                PatientController::class, 'showAll'
+            ]
+        )->name('patient-show-applications');
+
+        Route::get(
             'application/show/{application}', [
                 PatientController::class, 'show'
             ]

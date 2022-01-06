@@ -22,7 +22,7 @@
                 >Wnioskuj o szczepienie</a>
             </li>
             <li class="navItem">
-                <a class="nav-link disabled" aria-current="page" href="#">Historia szczepień</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('patient-show-applications') }}">Historia szczepień</a>
             </li>
             <li class="navItem">
                 <a class="nav-link disabled" aria-current="page" href="#">Moje Certyfikaty szczepienia</a>

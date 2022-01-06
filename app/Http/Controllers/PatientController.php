@@ -63,6 +63,19 @@ class PatientController extends Controller
             ]);
     }
 
+    public function showAll()
+    {
+        $AuthUserId = Auth::user()->id;
+        $application = Application::where('patient_id', $AuthUserId)->orderby('created_at')->limit(1);
+        $applications = Application::all()->where('patient_id', $AuthUserId)->sortby('status');
+
+        return view('patient.show-application', [
+                'applications' => $applications,
+                'application' => $application->first(),
+            ]
+        );
+    }
+
     public function show(Application $application)
     {
         $AuthUserId = Auth::user()->id;
