@@ -23,6 +23,7 @@ class DatabaseSeeder extends Seeder
             ApplicationSeeder::class,
             NewsSeeder::class,
             AddApplicationsForEachPatientsSeeder::class,
+            AddPersonalsForEachUsersSeeder::class,
         ]);
     }
 }
