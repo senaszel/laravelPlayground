@@ -10,10 +10,11 @@ h1 {
     display: grid;
     grid-template-columns: repeat(3,1fr);
     justify-content: space-evenly;
-    column-gap: 5%;
-    row-gap: 5%;
+    column-gap: 1.5%;
 }
-
+.outerlass {
+    margin-bottom: 5%;
+}
 .newsMiniature {
     align-content: start;
     place-items: center;
