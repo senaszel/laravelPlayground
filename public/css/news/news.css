@@ -25,13 +25,16 @@
     height: fit-content;
 }
 
-.formItem > p {
+.formItem > p,
+.formItem > h4 {
     text-align: start;
     inline-size: 100%;
     overflow-wrap: break-word;
     height: fit-content;
 }
-
+.formItem > h4 {
+    text-align: center;
+}
 .formItem:last-child {
     display: grid;
     grid-template-columns: 1fr 2.5fr 1fr;

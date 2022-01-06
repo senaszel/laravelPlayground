@@ -11,22 +11,27 @@ h1 {
     grid-template-columns: repeat(3,1fr);
     justify-content: space-evenly;
     column-gap: 5%;
+    row-gap: 5%;
 }
 
 .newsMiniature {
     align-content: start;
+    place-items: center;
+    height: 100%;
     width: 100%;
     background-color: rgb(201, 187, 170);
     display: grid;
-    place-items: center;
     padding:5%;
     margin: 5%;
 }
 
-.newsMiniature a h5 {
+.newsMiniature p, h4 {
     color: #320254;
+    text-align: center;
+    text-decoration: none;
 }
 
-.newsMiniature a p {
-    margin-left: auto;
+.abc {
+    text-decoration: none;
+    color:black;
 }

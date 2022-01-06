@@ -6,19 +6,23 @@
                             {{ \App\Helpers\RandomColor::insert($news->id) }}">
 
         <div class="formItem">
-            <p>{{ $title }}</p>
+            <p>tytuł</p>
+            <h4>{{ $title }}</h4>
         </div>
 
         <div class="formItem">
-            <p>{{ $author }}</p>
+            <p>autor</p>
+            <h4>{{ $author }}</h4>
         </div>
 
         <div class="formItem">
-            <p>{{ $desc }}</p>
+            <p>opis</p>
+            <h4>{{ $desc }}</h4>
         </div>
 
         <div class="formItem">
-            <p>{{ $content }}</p>
+            <p>treść</p>
+            <h4>{{ $content }}</h4>
         </div>
 
         <div class="formItem">
