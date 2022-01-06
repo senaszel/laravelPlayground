@@ -108,7 +108,7 @@
                         <li><a class="dropdown-item" href="{{ route('loginForm') }}">Zaloguj</a></li>
                     @endguest
                     @auth
-                        <li><a class="dropdown-item disabled" href="#">Moje dane</a></li>
+                        <li><a class="dropdown-item" href="{{ route('personals') }}">Moje dane</a></li>
                         <li><a class="dropdown-item" href="{{ route('logout') }}">Wyloguj</a></li>
                     @endauth
                 </ul>

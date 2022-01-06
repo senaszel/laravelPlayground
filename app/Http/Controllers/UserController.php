@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Enums\UserRole;
-use App\Enums\UserTitle;
 use App\Helpers\RoleTitleMatcher;
 use App\Models\User;
-use DeepCopy\TypeMatcher\TypeMatcher;
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\isEmpty;
 
 class UserController extends Controller
 {
