@@ -76,7 +76,7 @@
                     pacjenta</a>
             </li>
             <li class="navItem">
-                <a class="nav-link disabled" aria-current="page" href="#">Zaplanuj szczepienia</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('plan-vaccinations') }}">Zaplanuj szczepienia</a>
             </li>
         @endcan
 

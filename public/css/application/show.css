@@ -28,7 +28,7 @@
     justify-self: left;
 }
 
-.formItem > p {
+.formItem > p, .formItem h4 {
     background-color: rgba(26, 32, 44, 0.2);
     margin: 0;
     padding: 1%;
@@ -45,6 +45,7 @@
     font-size: 2rem;
     text-align: center;
     grid-template-columns: 1fr;
+    text-transform: full-width;
 }
 
 .resignOfAppointmentBtn {
@@ -80,7 +81,7 @@
     background-color: #034c81;
 }
 
-.downloadCert a {
+.downloadCert a, .downloadCertA {
     background-color: #edf2f7;
     color: #034c81;
     font-weight: bold;
@@ -88,3 +89,9 @@
     padding: 1%;
     font-size: 1.5rem;
 }
+
+input, select, option {
+    font-size: 2rem;
+}
+
+

@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Patient;
 
+use App\Helpers\VaccName;
 use App\Models\Vaccine;
 use Illuminate\View\Component;
 
@@ -31,7 +32,6 @@ class ShowCertificate extends Component
     }
 
     public function vaccName($id) {
-        $vacc = Vaccine::where('id', $id)->first();
-        return $vacc->name;
+        return VaccName::getById($id);
     }
 }

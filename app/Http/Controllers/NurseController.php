@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Enums\ApplicationStatus;
 use App\Enums\UserRole;
 use App\Enums\UserTitle;
+use App\Models\Application;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class NurseController extends Controller
 {
@@ -48,12 +51,12 @@ class NurseController extends Controller
 
         $msg = "Dane pacjenta zostały wysłane na podany adres email.";
 
-        return view('nurse.confirm-mail-patient',compact('user','msg'));
+        return view('nurse.confirm-mail-patient', compact('user', 'msg'));
     }
 
     public function confirmMail($user, $msg)
     {
-        ddd('confirm',$user,$msg);
+        ddd('confirm', $user, $msg);
         return view('nurse.confirm-mail-patient', compact('user', 'msg'));
     }
 
@@ -63,6 +66,30 @@ class NurseController extends Controller
 
         $msg = "Dane pacjenta zostały wydrukowane.";
 
-        return view('nurse.confirm-mail-patient',compact('user','msg'));
+        return view('nurse.confirm-mail-patient', compact('user', 'msg'));
+    }
+
+    public function planVaccinations(Application $application)
+    {
+        return view('nurse.plan-vaccinations', [
+                'application' => $application
+            ]
+        );
+    }
+
+    public function updateVaccination(Application $application, Request $request)
+    {
+        if ($request->doctor != 'null') {
+            DB::table('applications')
+                ->where('id', $application->id)
+                ->update([
+                    'status' => ApplicationStatus::PENDING,
+                    'doctor_id' => $request->doctor,
+                    'date_vaccination' => $request->date_vaccination,
+                    'updated_at' => now(),
+                ]);
+        }
+
+        return redirect()->route('plan-vaccinations');
     }
 }

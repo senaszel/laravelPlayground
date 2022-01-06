@@ -185,6 +185,9 @@ Route::middleware(['can:Admin'])->group(
 Route::middleware(['can:Nurse'])->group(
     function () {
 
+// NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE
+// PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT
+// PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT PATIENT
         Route::get(
             'nurse/create', [
                 NurseController::class, 'create'
@@ -220,6 +223,22 @@ Route::middleware(['can:Nurse'])->group(
                 NurseController::class, 'print'
             ]
         )->name('print-patient');
+
+        // NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE NURSE
+        // PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS
+        // PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS PLAN VACCINATIONS
+
+        Route::get(
+            'plan/vaccinations/{application?}', [
+                NurseController::class, 'planVaccinations'
+            ]
+        )->name('plan-vaccinations');
+
+        Route::post(
+            'plan/vaccination/update/{application}', [
+                NurseController::class, 'updateVaccination'
+            ]
+        )->name('update-vaccination');
     }
 );
 
