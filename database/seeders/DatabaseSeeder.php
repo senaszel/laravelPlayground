@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
             OneOfEachRoleSeeder::class,
             PersonalSeeder::class,
             VaccineSeeder::class,
-            ApplicationSeeder::class,
+//            ApplicationSeeder::class,
             NewsSeeder::class,
             AddApplicationsForEachPatientsSeeder::class,
             AddPersonalsForEachUsersSeeder::class,
