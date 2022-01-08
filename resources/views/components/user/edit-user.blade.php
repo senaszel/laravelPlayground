@@ -78,16 +78,20 @@
 
                 <div class="item_registerForm">
                     <label for="role" class="form-label">rola w systemie</label>
-                    <p for="role" class="form-label" style="font-size: small">Czy zmienić rolę?   ADMIN / NURSE / DOCTOR / PATIENT</p>
-                    <input
-                        type="text"
-                        class="form-control"
-                        name="role"
-                        id="role"
-                        placeholder="Czy zmienić rolę?   ADMIN / NURSE / DOCTOR / PATIENT"
-                        value="{{ $user->role }}"
-                        required
-                    >
+                    <p for="role" class="form-label" style="font-size: small">Czy zmienić rolę?</p>
+                    <select name="role" id="role" style="font-size: 2rem;">
+                        <option value="{{$user->role}}">{{ $user->role }}</option>
+                        @foreach(\App\Enums\UserRole::TYPES as $role)
+                            @if($role != $user->role)
+                                <option value="{{ $role }}"
+                                        style="font-size: 2rem;">
+                                    {{ $role }}
+                                </option>
+                            @endif
+                        @endforeach
+                    </select>
+
+
                     @error('role')
                     <p class="errorMSG">{{ $message }}</p>
                     @enderror
