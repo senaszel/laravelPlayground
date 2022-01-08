@@ -82,7 +82,7 @@
 
         @can('Doctor')
             <li class="navItem">
-                <a class="nav-link disabled" aria-current="page" href="#">Dzisiejsze szczepienia</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('doctor-work-today') }}">Dzisiejsze szczepienia</a>
             </li>
             <li class="navItem">
                 <a class="nav-link active" aria-current="page" href="{{ route('vaccines-index') }}">Rejestr

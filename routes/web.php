@@ -334,6 +334,28 @@ Route::middleware(['can:Doctor'])->group(
                 DoctorController::class, 'showVaccine'
             ]
         )->name('vaccines-show-vaccine');
+
+
+// DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR DOCTOR
+// TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK
+// TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK TODAYS WORK
+        Route::get(
+            'work/today/{application?}', [
+                DoctorController::class, 'todayIndex'
+            ]
+        )->name('doctor-work-today');
+
+        Route::post(
+            'work/today/confirm/{application}', [
+                DoctorController::class, 'confirmVaccination'
+            ]
+        )->name('doctor-confirm-vaccination');
+
+        Route::post(
+            'work/today/deny/{application}', [
+                DoctorController::class, 'denyVaccination'
+            ]
+        )->name('doctor-deny-vaccination');
     }
 );
 

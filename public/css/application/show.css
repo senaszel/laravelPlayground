@@ -94,4 +94,22 @@ input, select, option {
     font-size: 2rem;
 }
 
+.redbutton {
+    background-color: #89172c;
+    color: #ffffff;
+    align-self: end;
+    justify-self: end;
+}
 
+.greenButton {
+    background-color: green;
+    color: #ffffff;
+}
+
+.outer_greenButton {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    justify-self: stretch;
+    align-self: stretch;
+    gap: 5%;
+}
