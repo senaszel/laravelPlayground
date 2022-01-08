@@ -34,7 +34,8 @@
                             <a href="{{ Route('patient-show-application',['application'=>$chosenItem->id]) }}"
                                style="color:green;"
                             >
-                                Wniosek odbytego szczepienia {{ date_format(date_create($chosenItem->date_vaccination),'d-m-Y')}} r.
+                                Wniosek odbytego
+                                szczepienia {{ date_format(date_create($chosenItem->date_vaccination),'d-m-Y')}} r.
                             </a>
                         </li>
                     @elseif($chosenItem->status == \App\Enums\ApplicationStatus::SKIPPED)
@@ -42,7 +43,8 @@
                             <a href="{{ Route('patient-show-application',$chosenItem->id) }}"
                                style="color:red;"
                             >
-                                Wniosek o szczepienie, na który się nie stawiło dnia {{ date_format(date_create($chosenItem->date_vaccination),'d-m-Y')}} r.
+                                Wniosek o szczepienie, na który się nie stawiło
+                                dnia {{ date_format(date_create($chosenItem->date_vaccination),'d-m-Y')}} r.
                             </a>
                         </li>
                     @endif
@@ -63,31 +65,39 @@
             <div class="formItem">
                 <label class="">Status wniosku</label>
                 <p>
-                    {{ \App\Helpers\StatusForPatientsMatcher::cast($application->status) }}
+                    @if($application != null)
+                        {{ \App\Helpers\StatusForPatientsMatcher::cast($application->status) }}
+                    @endif
                 </p>
             </div>
 
             <div class="formItem">
                 <label class="">
-                    @if($application->status == \App\Enums\ApplicationStatus::DONE)
-                        Podany preparat
-                    @else
-                        Wybrany preparat
+                    @if($application != null)
+                        @if($application->status == \App\Enums\ApplicationStatus::DONE)
+                            Podany preparat
+                        @else
+                            Wybrany preparat
+                        @endif
                     @endif
                 </label>
                 <p>
-                    {{ $vaccName($application->vaccine_id) }}
+                    @if($application != null)
+                        {{ $vaccName($application->vaccine_id) }}
+                    @endif
                 </p>
             </div>
 
             <div class="formItem">
                 <label class="">Szczepienie przeprowadzi</label>
                 <p>
-                    @if($application->doctor_id != null)
-                        {{ \App\Models\User::where('id',$application->doctor_id)->get('title')->first()->title }}
-                        {{ \App\Models\User::where('id',$application->doctor_id)->get('username')->first()->username }}
-                    @else
-                        obecny lekarz
+                    @if($application != null)
+                        @if($application->doctor_id != null)
+                            {{ \App\Models\User::where('id',$application->doctor_id)->get('title')->first()->title }}
+                            {{ \App\Models\User::where('id',$application->doctor_id)->get('username')->first()->username }}
+                        @else
+                            obecny lekarz
+                        @endif
                     @endif
                 </p>
             </div>
@@ -95,26 +105,29 @@
             <div class="formItem">
                 <label for="role" class="">Data szczepienia</label>
                 <p>
-                    {{ $vaccine->date_vaccine ?? 'niewyznaczona' }}
+                    @if($application != null)
+                        {{ $vaccine->date_vaccine ?? 'niewyznaczona' }}
+                    @endif
                 </p>
             </div>
+            @if($application != null)
+                @if(
+                        $application->status == \App\Enums\ApplicationStatus::ISSUED
+                      or
+                        $application->status == \App\Enums\ApplicationStatus::PENDING)
 
-            @if(
-                    $application->status == \App\Enums\ApplicationStatus::ISSUED
-                  or
-                    $application->status == \App\Enums\ApplicationStatus::PENDING)
-
-                <div class="formItem hideit">
-                    <a></a>
-                    <form action="{{ route('patient-destroy-application',$application->id) }}"
-                          method="post"
-                          class="resignOfAppointmentBtn">
-                        @csrf
-                        <button type="submit">
-                            Zrezygnuj ze szczepienia
-                        </button>
-                    </form>
-                </div>
+                    <div class="formItem hideit">
+                        <a></a>
+                        <form action="{{ route('patient-destroy-application',$application->id) }}"
+                              method="post"
+                              class="resignOfAppointmentBtn">
+                            @csrf
+                            <button type="submit">
+                                Zrezygnuj ze szczepienia
+                            </button>
+                        </form>
+                    </div>
+                @endif
             @endif
         </div>
     </section>
