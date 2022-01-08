@@ -2,6 +2,7 @@
 
 namespace App\View\Components\Vaccines;
 
+use App\Helpers\VaccName;
 use App\Models\Vaccine;
 use Illuminate\View\Component;
 
@@ -26,5 +27,10 @@ class Show extends Component
     public function render()
     {
         return view('components.vaccines.show');
+    }
+
+    public function vaccName($id)
+    {
+        return VaccName::getById($id);
     }
 }
