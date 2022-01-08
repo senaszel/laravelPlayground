@@ -89,12 +89,24 @@
             </div>
 
             <div class="formItem">
-                <label class="">Szczepienie przeprowadzi</label>
+                @if($application != null)
+                    @if(
+                             $application->status == \App\Enums\ApplicationStatus::ISSUED
+                            or
+                            $application->status == \App\Enums\ApplicationStatus::PENDING)
+                        <label class="">Szczepienie przeprowadzi</label>
+                    @elseif($application->status == \App\Enums\ApplicationStatus::DONE)
+                        <label class="">Szczepienie przeprowadził</label>
+                    @elseif($application->status == \App\Enums\ApplicationStatus::SKIPPED)
+                        <label class="">Szczepienie miał przeprowadzić</label>
+                    @endif
+                @endif
                 <p>
                     @if($application != null)
                         @if($application->doctor_id != null)
                             {{ \App\Models\User::where('id',$application->doctor_id)->get('title')->first()->title }}
-                            {{ \App\Models\User::where('id',$application->doctor_id)->get('username')->first()->username }}
+                            {{ \App\Models\Personal::where('user_id',$application->doctor_id)->first()->firstname }}
+                            {{ \App\Models\Personal::where('user_id',$application->doctor_id)->first()->lastname }}
                         @else
                             obecny lekarz
                         @endif
@@ -106,7 +118,11 @@
                 <label for="role" class="">Data szczepienia</label>
                 <p>
                     @if($application != null)
-                        {{ $vaccine->date_vaccine ?? 'niewyznaczona' }}
+                        @if($application->status != \App\Enums\ApplicationStatus::ISSUED)
+                            {{ $application->date_vaccination ?? 'niewyznaczona' }}
+                        @else
+                            zostanie wyznaczona
+                        @endif
                     @endif
                 </p>
             </div>
