@@ -356,6 +356,12 @@ Route::middleware(['can:Doctor'])->group(
                 DoctorController::class, 'denyVaccination'
             ]
         )->name('doctor-deny-vaccination');
+
+        Route::get(
+            'work/schedule', [
+                DoctorController::class, 'workSchedule'
+            ]
+        )->name('doctor-work-schedule');
     }
 );
 

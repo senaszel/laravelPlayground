@@ -1,0 +1,27 @@
+table {
+    margin: 5% 25% 0 25%;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+}
+
+table th, table td {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    font-size: 2rem;
+}
+
+table th {
+    color: rgba(255, 255, 255, 0.75);
+    background-color: rgb(91, 162, 244);
+}
+
+table tr {
+    background-color: rgba(201, 187, 170, 0.5)
+}
+
+table tr:nth-child(2n) {
+    background-color: rgba(113, 128, 150, 0.5);
+}
+

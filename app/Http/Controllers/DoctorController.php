@@ -57,4 +57,8 @@ class DoctorController extends Controller
 
         return redirect()->route('doctor-work-today');
     }
+
+    public function workSchedule(){
+        return view('work.index');
+    }
 }

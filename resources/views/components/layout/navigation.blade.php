@@ -89,7 +89,7 @@
                     szczepionek</a>
             </li>
             <li class="navItem">
-                <a class="nav-link disabled" aria-current="page" href="#">Harmonogram pracy</a>
+                <a class="nav-link active" aria-current="page" href="{{ route('doctor-work-schedule') }}">Harmonogram pracy</a>
             </li>
         @endcan
         <li class="navItem" id="rightmost">
