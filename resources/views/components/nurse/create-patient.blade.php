@@ -41,8 +41,6 @@
             @enderror
         </div>
 
-
-
         <div class="item_registerForm">
             <button
                 id="registerButton"

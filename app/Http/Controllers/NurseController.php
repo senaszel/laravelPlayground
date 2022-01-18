@@ -5,12 +5,10 @@ namespace App\Http\Controllers;
 use App\Enums\ApplicationStatus;
 use App\Enums\UserRole;
 use App\Enums\UserTitle;
-use App\Http\Requests\UpdateVaccinationRequest;
+use App\Http\Requests\Nurse\StoreNurseControllerRequest;
+use App\Http\Requests\Nurse\UpdateVaccinationRequest;
 use App\Models\Application;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\DB;
 
 class NurseController extends Controller
 {
@@ -19,13 +17,8 @@ class NurseController extends Controller
         return view('nurse.create-patient');
     }
 
-    public function store(Request $request)
+    public function store(StoreNurseControllerRequest $request)
     {
-        $request->validate([
-            'username' => ['required'],
-            'email' => ['required', 'email'],
-        ]);
-
         $bytes = openssl_random_pseudo_bytes(4);
         $generatedPassword = bin2hex($bytes);
         $user = new User;
@@ -59,16 +52,13 @@ class NurseController extends Controller
 
     public function confirmMail($user, $msg)
     {
-        ddd('confirm', $user, $msg);
         return view('nurse.confirm-mail-patient', compact('user', 'msg'));
     }
 
     public function print(User $user)
     {
         // todo drukowanie danych pacjenta
-
         $msg = "Dane pacjenta zostały wydrukowane.";
-
         return view('nurse.confirm-mail-patient', compact('user', 'msg'));
     }
 
@@ -82,8 +72,10 @@ class NurseController extends Controller
         );
     }
 
-
-    public function updateVaccination(Application $application, UpdateVaccinationRequest $request)
+    public function updateVaccination(
+        Application $application,
+        UpdateVaccinationRequest $request
+        )
     {
         $application
             ->where('id', $application->id)
