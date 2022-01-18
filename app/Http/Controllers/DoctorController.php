@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Enums\ApplicationStatus;
 use App\Models\Application;
 use App\Models\Vaccine;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class DoctorController extends Controller
 {
@@ -14,7 +12,9 @@ class DoctorController extends Controller
     {
         $vaccines = Vaccine::all();
 
-        return view('vaccines.index', [
+        return view(
+            'vaccines.index',
+            [
                 'vaccines' => $vaccines,
             ]
         );
@@ -22,7 +22,9 @@ class DoctorController extends Controller
 
     public function showVaccine(Vaccine $vaccine)
     {
-        return view('vaccines.show-vaccine', [
+        return view(
+            'vaccines.show-vaccine',
+            [
                 'vaccine' => $vaccine
             ]
         );
@@ -30,7 +32,9 @@ class DoctorController extends Controller
 
     public function todayIndex(Application $application = null)
     {
-        return view('work.today-index', [
+        return view(
+            'work.today-index',
+            [
                 'chosenAppointment' => $application
             ]
         );
@@ -38,10 +42,11 @@ class DoctorController extends Controller
 
     public function confirmVaccination(Application $application)
     {
-        Application::where('id', $application->id)
+        $application
+            ->where('id', $application->id)
             ->update([
-                'status'=>ApplicationStatus::DONE,
-                'updated_at'=>now(),
+                'status' => ApplicationStatus::DONE,
+                'updated_at' => now(),
             ]);
 
         return redirect()->route('doctor-work-today');
@@ -49,16 +54,18 @@ class DoctorController extends Controller
 
     public function denyVaccination(Application $application)
     {
-        Application::where('id', $application->id)
+        $application
+            ->where('id', $application->id)
             ->update([
-                'status'=>ApplicationStatus::SKIPPED,
-                'updated_at'=>now(),
+                'status' => ApplicationStatus::SKIPPED,
+                'updated_at' => now(),
             ]);
 
         return redirect()->route('doctor-work-today');
     }
 
-    public function workSchedule(){
+    public function workSchedule()
+    {
         return view('work.index');
     }
 }
