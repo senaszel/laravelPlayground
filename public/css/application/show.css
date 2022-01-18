@@ -113,3 +113,12 @@ input, select, option {
     align-self: stretch;
     gap: 5%;
 }
+
+select, option {
+    font-size: 2rem;
+}
+
+.Disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+}

@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Enums\ApplicationStatus;
 use App\Enums\UserRole;
 use App\Enums\UserTitle;
+use App\Http\Requests\UpdateVaccinationRequest;
 use App\Models\Application;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 
 class NurseController extends Controller
@@ -26,7 +28,8 @@ class NurseController extends Controller
 
         // todo generator haseł.
         $generatedPassword = uniqid();
-        $user = User::create([
+        $user = new User();
+        $user->save([
             'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($generatedPassword),
@@ -77,18 +80,12 @@ class NurseController extends Controller
         );
     }
 
-    public function updateVaccination(Application $application, Request $request)
+
+    public function updateVaccination(Application $application, UpdateVaccinationRequest $request)
     {
-        if ($request->doctor != 'null') {
-            DB::table('applications')
-                ->where('id', $application->id)
-                ->update([
-                    'status' => ApplicationStatus::PENDING,
-                    'doctor_id' => $request->doctor,
-                    'date_vaccination' => $request->date_vaccination,
-                    'updated_at' => now(),
-                ]);
-        }
+        $application
+            ->where('id', $application->id)
+            ->update(array_merge($request->validated(),array_combine((array)'status', (array)ApplicationStatus::PENDING)));
 
         return redirect()->route('plan-vaccinations');
     }

@@ -69,20 +69,34 @@
                 method="post">
                 @csrf
                 <div class="formItem">
-                    <label class="" for="doctor">Szczepienie przeprowadzi</label>
-                    <select name="doctor" id="doctor">
-                        <option value="null">wybierz</option>
+                    <label class="" for="doctor_id">Szczepienie przeprowadzi</label>
+                    <select @unless($isApp)class="Disabled" @endunless name="doctor_id" id="doctor_id" required>
+                        <option
+                            value="null"
+                            @unless($isApp)
+                            disabled
+                            @endunless
+                        >wybierz
+                        </option>
                         @if($isApp)
                             @foreach($doctors as $doctor)
-                                <option value="{{ $doctor->id }}">{{ $doctorFullName($doctor->id) }}</option>
+                                <option
+                                    value="{{ $doctor->id }}">{{ $doctorFullName($doctor->id) }}</option>
                             @endforeach
                         @endif
                     </select>
                 </div>
 
                 <div class="formItem">
-                    <label for="role" class="">Data szczepienia</label>
-                    <input type="date" name="date_vaccination" for="date_vaccination">
+                    <label for="date_vaccination" class="">Data szczepienia</label>
+                    <input
+                        type="date"
+                        name="date_vaccination"
+                        required
+                        @unless($isApp)
+                        disabled
+                        @endunless
+                    >
                 </div>
 
                 <div class="formItem hideit downloadCert">
@@ -97,6 +111,14 @@
                     </button>
                 </div>
             </form>
+            @if ($errors->any())
+                <ul class="alert alert-warning">
+                    @foreach ($errors->all() as $error)
+                        <li> {{ $error }}</li>
+                    @endforeach
+                </ul>
+            @endif
+
         </div>
     </section>
 </aside>
