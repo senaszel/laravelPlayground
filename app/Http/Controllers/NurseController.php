@@ -26,10 +26,10 @@ class NurseController extends Controller
             'email' => ['required', 'email'],
         ]);
 
-        // todo generator haseł.
-        $generatedPassword = uniqid();
-        $user = new User();
-        $user->save([
+        $bytes = openssl_random_pseudo_bytes(4);
+        $generatedPassword = bin2hex($bytes);
+        $user = new User;
+        $user = $user->create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => bcrypt($generatedPassword),
@@ -74,7 +74,9 @@ class NurseController extends Controller
 
     public function planVaccinations(Application $application)
     {
-        return view('nurse.plan-vaccinations', [
+        return view(
+            'nurse.plan-vaccinations',
+            [
                 'application' => $application
             ]
         );
@@ -85,7 +87,7 @@ class NurseController extends Controller
     {
         $application
             ->where('id', $application->id)
-            ->update(array_merge($request->validated(),array_combine((array)'status', (array)ApplicationStatus::PENDING)));
+            ->update(array_merge($request->validated(), array_combine((array)'status', (array)ApplicationStatus::PENDING)));
 
         return redirect()->route('plan-vaccinations');
     }
