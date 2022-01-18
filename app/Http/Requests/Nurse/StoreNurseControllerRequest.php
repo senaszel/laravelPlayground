@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests\Nurse;
 
-use App\Enums\UserRole;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreNurseControllerRequest extends FormRequest
