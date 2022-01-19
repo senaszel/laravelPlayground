@@ -8,6 +8,7 @@ use App\Models\Application;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use App\Http\Requests\Patient\StorePatientControllerRequest;
 
 class PatientController extends Controller
 {
@@ -50,7 +51,7 @@ class PatientController extends Controller
         );
     }
 
-    public function store(Request $request)
+    public function store(StorePatientControllerRequest $request)
     {
         $application = Application::create([
             'patient_id' => Auth::user()->id,
@@ -118,19 +119,6 @@ class PatientController extends Controller
     {
 
         return view('patient.edit-application', $application);
-    }
-
-    public function update(Request $request)
-    {
-        $request->validate([
-
-        ]);
-
-        Application::create([
-
-        ]);
-
-        return view();
     }
 
     public function destroy(Application $application)
