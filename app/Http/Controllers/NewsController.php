@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\News;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\News\UpdateNewsControllerRequest;
+use App\Http\Requests\News\StoreNewsControllerRequest;
 
 class NewsController extends Controller
 {
@@ -19,24 +19,14 @@ class NewsController extends Controller
         return view('news.add-new-news');
     }
 
-    // todo create storeNewsControllerRequest
-    public function store(Request $request)
+    public function store(StoreNewsControllerRequest $request)
     {
-        $request->validate([
-            'title' => ['required', 'max:150'],
-            'description' => ['required', 'max:150'],
-            'content' => ['required', 'max:2000'],
-        ]);
+        $news = new News;
+        $author = $request->author ?? Auth::user()->username;
+        $publisher_id = Auth::user()->id;
+        $news = $news->create(array_merge($request->validated(), array_combine(array('author', 'publisher_id'), array($author, $publisher_id))));
 
-        $newNews = News::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'content' => $request['content'],
-            'author' => $request->author ?? Auth::user()->username,
-            'publisher_id' => Auth::user()->id,
-        ]);
-
-        return redirect('news/' . $newNews->id);
+        return redirect('news/' . $news->id);
     }
 
     public function show(News $news)
