@@ -3,6 +3,7 @@
 namespace App\Http\Requests\News;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class UpdateNewsControllerRequest extends FormRequest
 {
@@ -28,5 +29,13 @@ class UpdateNewsControllerRequest extends FormRequest
             'description' => ['required', 'max:150'],
             'content' => ['required', 'max:2000'],
         ];
+    }
+
+    public function validated() : array
+    {
+        return array_merge(parent::validated(), [
+            'author' => $this->author ?? Auth::user()->username,
+            'publisher_id' => Auth::user()->id,
+        ]);
     }
 }
