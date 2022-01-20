@@ -21,11 +21,7 @@ class NewsController extends Controller
 
     public function store(StoreNewsControllerRequest $request)
     {
-        $news = new News;
-        $author = $request->author ?? Auth::user()->username;
-        $publisher_id = Auth::user()->id;
-        $news = $news->create(array_merge($request->validated(), array_combine(array('author', 'publisher_id'), array($author, $publisher_id))));
-
+        $news = News::create($request->validated());
         return redirect('news/' . $news->id);
     }
 
