@@ -7,7 +7,6 @@ use App\Enums\UserRole;
 use App\Models\Application;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
 use App\Http\Requests\Patient\StorePatientControllerRequest;
 
 class PatientController extends Controller
@@ -113,12 +112,6 @@ class PatientController extends Controller
                 'application' => $application,
             ]
         );
-    }
-
-    public function edit(Application $application)
-    {
-
-        return view('patient.edit-application', $application);
     }
 
     public function destroy(Application $application)
