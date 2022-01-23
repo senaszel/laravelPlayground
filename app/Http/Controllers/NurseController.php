@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\NurseServiceInterface;
 use App\Enums\ApplicationStatus;
-use App\Enums\UserRole;
-use App\Enums\UserTitle;
 use App\Http\Requests\Nurse\StoreNurseControllerRequest;
 use App\Http\Requests\Nurse\UpdateVaccinationRequest;
 use App\Models\Application;
@@ -12,6 +11,14 @@ use App\Models\User;
 
 class NurseController extends Controller
 {
+    private $nurseService;
+
+    public function __construct(NurseServiceInterface $nurseService)
+    {
+        $this->nurseService = $nurseService;
+    }
+
+
     public function create()
     {
         return view('nurse.create-patient');
@@ -19,19 +26,8 @@ class NurseController extends Controller
 
     public function store(StoreNurseControllerRequest $request)
     {
-        $bytes = openssl_random_pseudo_bytes(4);
-        $generatedPassword = bin2hex($bytes);
-        $user = new User;
-        $user = $user->create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => bcrypt($generatedPassword),
-            'role' => UserRole::PATIENT,
-            'title' => UserTitle::PATIENT,
-        ]);
-
-        return redirect()
-            ->route('show-patient', $user->id);
+        $user = $this->nurseService->createPatient($request->validated());
+        return redirect()->route('show-patient', $user->id);
     }
 
     public function show(User $user)
@@ -44,9 +40,7 @@ class NurseController extends Controller
     public function mailPatient(User $user)
     {
         // todo wysyłanie maila z danymi do pacjenta
-
         $msg = "Dane pacjenta zostały wysłane na podany adres email.";
-
         return view('nurse.confirm-mail-patient', compact('user', 'msg'));
     }
 
@@ -72,15 +66,9 @@ class NurseController extends Controller
         );
     }
 
-    public function updateVaccination(
-        Application $application,
-        UpdateVaccinationRequest $request
-        )
+    public function updateVaccination(UpdateVaccinationRequest $request, Application $application)
     {
-        $application
-            ->where('id', $application->id)
-            ->update(array_merge($request->validated(), array_combine((array)'status', (array)ApplicationStatus::PENDING)));
-
+        $this->nurseService->updateVaccinationApplication($request->validated(), $application);
         return redirect()->route('plan-vaccinations');
     }
 }
