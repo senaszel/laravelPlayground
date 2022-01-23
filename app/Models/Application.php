@@ -18,6 +18,6 @@ class Application extends Model
         'vaccine_id',
         'doctor_id',
         'status',
-        'date_vaccine',
+        'date_vaccination',
     ];
 }
