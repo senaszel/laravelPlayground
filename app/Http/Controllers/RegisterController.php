@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Register\LoginRequest;
 use App\Models\Personal;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -14,15 +15,12 @@ class RegisterController extends Controller
         return view('register.loginForm');
     }
 
-    public function login(Request $request)
+    public function login(LoginRequest $request)
     {
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
-        Auth::attempt($credentials);
-        // todo jak sie poda zle haslo to ma nie isc do homa
-        return redirect()->route('home');
+        if(Auth::attempt($request->validated())){
+            return redirect()->route('home');
+        };
+        return redirect()->back()->withInput();
     }
 
     public function logout()
@@ -31,21 +29,11 @@ class RegisterController extends Controller
         return redirect()->route('home');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|\Illuminate\Http\Response
-     */
     public function create()
     {
         return view('register.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @return string
-     */
     public function store(Request $request)
     {
         $validated = $request->validate([
@@ -63,7 +51,6 @@ class RegisterController extends Controller
     {
         $authUserId = auth()->user()->id;
         $personals = Personal::where('user_id', $authUserId)->first();
-
         return view('register.personals', [
                 'personals' => $personals,
             ]
