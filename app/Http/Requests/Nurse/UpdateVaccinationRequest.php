@@ -30,4 +30,15 @@ class UpdateVaccinationRequest extends FormRequest
             'date_vaccination' => ['required', 'date'],
         ];
     }
+
+    public function validated()
+    {
+        return array_merge(
+            parent::validated(),
+            [
+                'status' => ApplicationStatus::PENDING,
+                'updated_at' => now(),
+            ]
+        );
+    }
 }

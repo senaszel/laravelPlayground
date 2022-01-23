@@ -2,10 +2,20 @@
 
 namespace App\Http\Requests\Nurse;
 
+use App\Enums\UserRole;
+use App\Enums\UserTitle;
+use App\Helpers\RoleTitleMatcher;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StoreNurseControllerRequest extends FormRequest
 {
+    /**
+     * The route that users should be redirected to if validation fails.
+     *
+     * @var string
+     */
+    protected $redirectRoute = 'nurse.create-patient';
+
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -29,6 +39,19 @@ class StoreNurseControllerRequest extends FormRequest
         ];
     }
 
+    public function validated() : array
+    {
+        $bytes = openssl_random_pseudo_bytes(4);
+        $generatedPassword = bin2hex($bytes);
+
+        return array_merge(
+            parent::validated(),
+            [
+                'password' => bcrypt($generatedPassword),
+                'role' => UserRole::PATIENT,
+                'title' => UserTitle::PATIENT,
+            ]);
+    }
     /*
      * Get the error messages for the defined validation rules.
     *
