@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Helpers\RoleTitleMatcher;
-use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\StoreUserControllerRequest;
+use App\Http\Requests\User\UpdateUserControllerRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -19,9 +18,10 @@ class UserController extends Controller
         return view('user.create-user');
     }
 
-    public function store(CreateUserRequest $request)
+    public function store(StoreUserControllerRequest $request)
     {
-        $user = new User($request->validated());
+        $user = User::create($request->validated());
+        ddd(User::find($user));
         return redirect()->route('show-user', $user->id);
     }
 
@@ -35,28 +35,16 @@ class UserController extends Controller
         return view('user.edit-user', compact('user', $user));
     }
 
-    public function update(Request $request, User $user)
+    public function update(UpdateUserControllerRequest $request, User $user)
     {
-        $request->validate([
-            'username' => ['required'],
-            'email' => ['required', 'email'],
-            'password' => ['required'],
-            'role' => ['required'],
-        ]);
-
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->role = $request->role;
-        $user->title = RoleTitleMatcher::cast($request->role);
-        $user->save();
-
+        $user = $user->update($request->validated());
+        ddd($user);
         return redirect()->route('show-user', $user);
     }
 
     public function destroy(User $user)
     {
-        User::where('id',$user->id)->delete();
-        return redirect(User::latestID());
+        $user->delete();
+        return redirect()->route('index-user',User::latest()->first()->id);
     }
 }
