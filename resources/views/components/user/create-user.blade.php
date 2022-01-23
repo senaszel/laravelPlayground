@@ -59,14 +59,16 @@
 
             <div class="item_registerForm">
                 <label for="role" class="form-label">rola w systemie</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    name="role"
-                    id="role"
-                    placeholder="ADMIN / NURSE / DOCTOR / PATIENT"
-                    required
-                >
+                <p for="role" class="form-label" style="font-size: small">wskaz rolę:</p>
+                <select name="role" id="role" style="font-size: 2rem;" required>
+                    @foreach(\App\Enums\UserRole::TYPES as $role)
+                            <option value="{{ $role }}"
+                                    style="font-size: 2rem;">
+                                {{ $role }}
+                            </option>
+                    @endforeach
+                </select>
+
                 @error('role')
                 <p class="errorMSG">{{ $message }}</p>
                 @enderror
