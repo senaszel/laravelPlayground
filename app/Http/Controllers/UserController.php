@@ -4,10 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\User\StoreUserControllerRequest;
 use App\Http\Requests\User\UpdateUserControllerRequest;
+use App\Interfaces\UserServiceInterface;
 use App\Models\User;
 
 class UserController extends Controller
 {
+    private $userService;
+
+    public function __construct(UserServiceInterface $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function index(User $user)
     {
         return view('user.index-user', ['user' => $user]);
@@ -20,8 +28,7 @@ class UserController extends Controller
 
     public function store(StoreUserControllerRequest $request)
     {
-        $user = User::create($request->validated());
-        ddd(User::find($user));
+        $user = $this->userService->create($request->validated());
         return redirect()->route('show-user', $user->id);
     }
 
@@ -37,8 +44,7 @@ class UserController extends Controller
 
     public function update(UpdateUserControllerRequest $request, User $user)
     {
-        $user = $user->update($request->validated());
-        ddd($user);
+        $user = $this->userService->update($request->validated(),$user);
         return redirect()->route('show-user', $user);
     }
 
