@@ -59,7 +59,7 @@
                     <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                         <li class="navItem">
                             <a class="nav-link active" aria-current="page"
-                               href="{{ url(\App\Models\User::latestID()) }}">Wszyscy użytkownicy</a>
+                               href="{{ route('index-user',app\Models\User::latest()->first()->id) }}">Wszyscy użytkownicy</a>
                         </li>
                         <li class="navItem">
                             <a class="nav-link active" aria-current="page" href="{{ route('create-user') }}">Dodaj
