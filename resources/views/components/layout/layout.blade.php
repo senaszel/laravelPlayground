@@ -13,9 +13,6 @@
     <link rel="stylesheet"
           href="{{ asset('css/old-layout.css') }}"
     >
-    <link rel="stylesheet"
-          href="{{ asset('css/navigationComponent.css') }}"
-    >
 </head>
 
 <body>
